@@ -1,0 +1,20 @@
+<%- title "Payout: Ceefuu" %>
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8-tablet is-6-desktop is-6-widescreen">
+                <p class="title has-text-centered">Recieve your earnings</p>
+                <br>
+                
+                <%= form_with url: update_payout_path, local: true do |f| %>
+                    <div class="field">
+                        <%= f.text_field :paypal, value: current_user.paypal, placeholder: "Your Paypal Email", class: "input" %>
+                    </div><br>
+                    <div class="field is-grouped is-grouped-centered">
+                        <%= f.submit "Add payout email", class: "button is-dark" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

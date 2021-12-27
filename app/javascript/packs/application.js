@@ -7,7 +7,26 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "raty-js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.Noty = require("noty")
+window.Dropzone = require("dropzone")
+window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/js/bulma-carousel")
+window.Calendar = require("@fullcalendar/core").Calendar;
+window.DayGridPlugin = require("@fullcalendar/daygrid").default;
+window.ListPlugin = require("@fullcalendar/list").default;
+
+
+$(document).on('turbolinks:load', () => {
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
+require("trix")
+require("@rails/actiontext")

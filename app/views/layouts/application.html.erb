@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ceefuu</title>
+  <title>
+    <%- if content_for? :page_title -%>
+    <%= yield :page_title %> – Ceefuu
+    <%- else -%>
+    Ceefuu: Create and Sell Premium Content
+    <%- end -%>
+  </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.stripe.com/v3/" async></script>
+    
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% end %>
+
   </head>
 
   <body>
+    <% unless controller_name == "registrations" or controller_name == "sessions" %>
+    <%= render  "shared/navbar" %>
+     <% end %>
+    <%= render 'shared/notification' %>
+   
     <%= yield %>
   </body>
 </html>

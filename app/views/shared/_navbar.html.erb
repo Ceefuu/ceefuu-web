@@ -1,0 +1,117 @@
+<style>
+div.scrollmenu {
+  background-color: #ffffff;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: grey;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #ffffff;
+}
+</style>
+
+<nav class="navbar is-white has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <%= image_tag("website-logo-icon.png") %>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="true" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                 <%= form_tag search_path, method: :get do %>
+                    <div class="field <%= 'is-hidden' if current_page?(root_path) %>">
+                        <div class="control has-icons-left">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <%= text_field_tag 'q', '', class: "input is-rounded", placeholder: "Find a creator, or topic" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <%= link_to 'Pricing', plans_path, class: "navbar-item" %>
+            <%= link_to 'Create', new_content_path, class: "navbar-item" %>
+            <%= link_to 'Discover', search_path, class: "navbar-item" %>
+
+            <% if (!user_signed_in?) %>
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <%= link_to  "Sign Up", new_user_registration_path, class: "button is-dark" %>
+                        <%= link_to  "Login", new_user_session_path, class: "button is-light" %>
+                    </div>
+                </div>
+            <% else %>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <figure class="image is-24x24 m-r-5 avatar is-hidden-mobile <%= current_user.status ? "online" : "offline" %>">
+                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
+                        </figure>
+                        <%= current_user.full_name %>
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <%= link_to  "Profile", edit_user_registration_path, class: "navbar-item" %>
+                        <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
+                        <hr class="navbar-divider">
+                        <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</nav>
+
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?(plans_path) && !current_page?(search_path) && !current_page?("/contents/#{params[:id]}") && !current_page?("/users/#{params[:id]}") %>
+    <nav class="navbar has-shadow" style="z-index: 5">
+        <div class="container">
+            <div class="scrollmenu">
+                <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
+                <%= link_to 'Calendar', calendar_path, class: "navbar-item" %>
+                <%= link_to 'Create New Content', new_content_path, class: "navbar-item" %>
+                <%= link_to 'Selling History', selling_orders_path, class: "navbar-item" %>
+                <%= link_to 'Purchase History', buying_orders_path, class: "navbar-item" %>
+                <%= link_to 'Earnings', earnings_path, class: "navbar-item" %>
+                <%= link_to 'Messages', conversations_path, class: "navbar-item" %>
+                <%= link_to 'Payment Method', settings_payment_path, class: "navbar-item" %>
+                <%= link_to 'Payout Method', settings_payout_path, class: "navbar-item" %>
+            </div>
+        </div>
+    </nav>
+<% end %>
+
+<script>
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+</script>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
