@@ -14,6 +14,7 @@ class User < ApplicationRecord
          :omniauthable
 
   validates :full_name, presence: true, length: {maximum: 50}
+  validates :username, uniqueness: true, if: -> { username.present? }
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

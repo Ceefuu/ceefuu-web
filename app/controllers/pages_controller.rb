@@ -3,63 +3,54 @@ class PagesController < ApplicationController
   end
 
   def search
-    if params[:username].present?
-      user = User.find_by(username: params[:username])
-      if user.present?
-        redirect_to request.referrer, flash: { error: 'Username already taken' }
-      else
-        redirect_to new_user_registration_path(username: params[:username])
-      end
-    else
-      @categories = Category.all
-      @category = Category.find(params[:category]) if params[:category].present?
+    @categories = Category.all
+    @category = Category.find(params[:category]) if params[:category].present?
 
-      # @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
+    # @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
 
-      @q = params[:q]
-      @min = params[:min]
-      @max = params[:max]
-      @delivery = params[:delivery].present? ? params[:delivery] : "0"
-      @sort = params[:sort].present? ? params[:sort] : "price asc"
+    @q = params[:q]
+    @min = params[:min]
+    @max = params[:max]
+    @delivery = params[:delivery].present? ? params[:delivery] : "0"
+    @sort = params[:sort].present? ? params[:sort] : "price asc"
 
-      query_condition = []
-      query_condition[0] = "contents.active = true"
-      query_condition[0] += " AND ((contents.has_single_price = true AND pricings.pricing_type = 0) OR (contents.has_single_price = false))"
+    query_condition = []
+    query_condition[0] = "contents.active = true"
+    query_condition[0] += " AND ((contents.has_single_price = true AND pricings.pricing_type = 0) OR (contents.has_single_price = false))"
 
-      if !@q.blank?
-        query_condition[0] += " AND contents.title ILIKE ?"
-        query_condition.push "%#{@q}%"
-      end
-
-      if !params[:category].blank?
-        query_condition[0] += " AND category_id = ?"
-        query_condition.push params[:category]
-      end
-
-      if !params[:min].blank?
-        query_condition[0] += " AND pricings.price >= ?"
-        query_condition.push @min
-      end
-
-      if !params[:max].blank?
-        query_condition[0] += " AND pricings.price <= ?"
-        query_condition.push @max
-      end
-
-      if !params[:delivery].blank? && params[:delivery] != "0"
-        query_condition[0] += " AND pricings.delivery_time <= ?"
-        query_condition.push @delivery
-      end
-
-      @contents = Content
-                  .select("contents.id, contents.title, contents.user_id, MIN(pricings.price) AS price")
-                  .joins(:pricings)
-                  .where(query_condition)
-                  .group("contents.id")
-                  .order(@sort)
-                  .page(params[:page])
-                  .per(6)
+    if !@q.blank?
+      query_condition[0] += " AND contents.title ILIKE ?"
+      query_condition.push "%#{@q}%"
     end
+
+    if !params[:category].blank?
+      query_condition[0] += " AND category_id = ?"
+      query_condition.push params[:category]
+    end
+
+    if !params[:min].blank?
+      query_condition[0] += " AND pricings.price >= ?"
+      query_condition.push @min
+    end
+
+    if !params[:max].blank?
+      query_condition[0] += " AND pricings.price <= ?"
+      query_condition.push @max
+    end
+
+    if !params[:delivery].blank? && params[:delivery] != "0"
+      query_condition[0] += " AND pricings.delivery_time <= ?"
+      query_condition.push @delivery
+    end
+
+    @contents = Content
+                .select("contents.id, contents.title, contents.user_id, MIN(pricings.price) AS price")
+                .joins(:pricings)
+                .where(query_condition)
+                .group("contents.id")
+                .order(@sort)
+                .page(params[:page])
+                .per(6)
   end
 
   def calendar

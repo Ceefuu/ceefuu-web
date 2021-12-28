@@ -1,8 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @username = params[:username]
-    super
+    if params[:username].present?
+      user = User.find_by(username: params[:username])
+      if user.present?
+        redirect_to request.referrer, flash: { error: 'Username already taken' }
+      else
+        @username = params[:username]
+        super
+      end
+    else
+      super
+    end
   end
 
   protected

@@ -17,7 +17,7 @@
         <% if (!user_signed_in?) %>
             <%= form_tag new_user_registration_path, method: :get, class: "field has-addons has-addons-centered" do %>
                 <div class="control">
-                    <%= text_field_tag 'username', '', class: "input is-medium is-rounded is-dark expanded", placeholder: "Claim your username" %>
+                    <%= text_field_tag 'username', '', class: "input is-medium is-rounded is-dark expanded", placeholder: "Claim your username", required: true %>
                 </div>
                 <div class="control">
                     <button class="button is-dark is-medium is-rounded" type="submit"><i class="fa fa-angle-double-right"></i></button>
