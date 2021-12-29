@@ -41,7 +41,7 @@ div.scrollmenu a:hover {
                             <span class="icon is-small is-left">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <%= text_field_tag 'q', '', class: "input is-rounded", placeholder: "Find a creator, or topic" %>
+                            <%= text_field_tag 'q', '', class: "input is-rounded", placeholder: "Discover a topic" %>
                         </div>
                     </div>
                 <% end %>
@@ -57,7 +57,7 @@ div.scrollmenu a:hover {
                 <div class="navbar-item">
                     <div class="buttons">
                         <%= link_to  "Sign Up", new_user_registration_path, class: "button is-dark" %>
-                        <%= link_to  "Login", new_user_session_path, class: "button is-light" %>
+                        <%= link_to  "Login", new_user_session_path, class: "button is-light", data: { turbolinks: false } %>
                     </div>
                 </div>
             <% else %>

@@ -7,19 +7,29 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title has-text-black has-text-centered has-text-weight-bold is-1 is-size-3-mobile is-spaced main-title">
-                Where top creators<br> sell premium content
+                Where top creators<br>sell premium content
             </h1>
-            <h2 class="subtitle has-text-dark has-text-centered is-size-5 is-size-7-mobile">
-                    Great content is valuable. We believe creators can earn<br>a meaningful income by selling premium content.
-                    </h2>&nbsp;
-            <%= form_tag search_path, method: :get, class: "field has-addons has-addons-centered" do %>
+             
+            <h2 class="subtitle has-text-dark has-text-centered is-size-4 is-size-4-mobile">
+                Great content is valuable. Start selling and get paid.
+            </h2><br>
+
+        <% if (!user_signed_in?) %>
+            <%= form_tag new_user_registration_path, method: :get, class: "field has-addons has-addons-centered" do %>
                 <div class="control">
-                    <%= text_field_tag 'q', '', class: "input is-medium is-rounded is-dark expanded", placeholder: "Find a creator, or topic" %>
+                    <%= text_field_tag 'username', '', class: "input is-medium is-rounded is-dark expanded", placeholder: "Claim your username", required: true %>
                 </div>
                 <div class="control">
-                    <button class="button is-dark is-medium is-rounded" type="submit"><i class="fa fa-search"></i></button>
+                    <button class="button is-dark is-medium is-rounded" type="submit"><i class="fa fa-angle-double-right"></i></button>
                 </div>
             <% end %>
+
+        <% else %>
+        <div class="container has-text-centered">
+            <%= link_to 'Dashboard', dashboard_path, class: "button is-dark is-medium m-t-10 is-rounded" %>
+        <% end %>
+        </div>
+
         </div>
     </div>
 </section>
