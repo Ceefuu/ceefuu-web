@@ -99,14 +99,22 @@ class OrdersController < ApplicationController
                 return true
             end
         else
-            intent = Stripe::PaymentIntent.create({
+            # first step is to create payment intent and 
+            # then using payment  intend id confirm the payment
+            # TODO: 
+            # 1. find better way to handle Stripe Payment Intent API
+            # 2. Move Stripe Payment Intent API logic to service
+            payment_intent = Stripe::PaymentIntent.create({
                 amount: (amount * 100).to_i,
                 currency: 'usd',
-                customer: current_user.stripe_id,
-                source: params[:payment],
             })
 
-            if intent.paid
+            confirm_intent = Stripe::PaymentIntent.confirm(
+              payment_intent.id,
+              {payment_method: 'pm_card_visa'},
+            )
+
+            if confirm_intent.status == 'succeeded'
                 ActiveRecord::Base.transaction do
                     content.user.update!(wallet: content.user.wallet + pricing.price)
                     Transaction.create! status: Transaction.statuses[:approved],

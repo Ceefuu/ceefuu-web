@@ -96,7 +96,6 @@ class ContentsController < ApplicationController
   end
 
   def checkout
-
     subscription = Subscription.find_by_user_id(current_user.id)
     if subscription.present? && subscription.success?
       plan = Stripe::Plan.retrieve(subscription.plan_id)
@@ -106,8 +105,11 @@ class ContentsController < ApplicationController
     end
 
     if current_user.stripe_id
-      @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_id)
-
+      # @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_id)
+      @stripe_customer = Stripe::Customer.list_sources(
+                            current_user.stripe_id,
+                            {object: 'card'},
+                          )
       @content = Content.find(params[:id])
       @pricing = @content.pricings.find_by(pricing_type: params[:pricing_type])
     else

@@ -18,7 +18,7 @@
                                     </div>
                                     <hr>
                                     <div class="content">
-                                        <% @stripe_customer.source.each do |payment| %>
+                                        <% @stripe_customer.data.each do |payment| %>
                                             <div class="control">
                                                 <%= radio_button_tag 'payment', payment.id, checked: true %>
                                                 <span class="m-l-10">
