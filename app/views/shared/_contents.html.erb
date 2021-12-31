@@ -1,14 +1,36 @@
 <% @contents.each do |content| %>
-
+<%#- binding.pry %>
     <div class="column is-one-third">
         <div class="card">
 
             <div class="card-image">
-                <%= link_to content_path(content) do %>
-                    <figure class="image is-4by4">
+                <%#= link_to content_path(content) do %>
+                    <!-- <figure class="image is-4by4">
                         <%= image_tag content_cover(content) %>
-                    </figure>
-                <% end %>
+                    </figure> -->
+                    <div class="column is-full">   
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="title is-4"><%= content.title %></p>
+                                </div>
+                                <hr>
+                                <div class="hero-carousel" id="carousel-photo">
+                                    <% if content.pitch.present? %>
+                                        <div class="video-container">
+                                            <iframe src="https://www.youtube.com/embed/<%= content.pitch %>" allowfullscreen></iframe>
+                                        </div>
+                                    <% end %>
+                                    <% content.photos.each do |photo| %>
+                                        <div class="carousel-item has-background image is-16by9">
+                                            <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%# end %>
             </div>
 
             <div class="card-content p-t-5 p-b-5">
@@ -37,3 +59,22 @@
     </div>
 
 <% end %>
+<script>
+    BulmaCarousel.attach('#carousel-photo', {
+        slidesToScroll: 1,
+        slidesToShow: 1
+    });
+
+    $(document).ready(function() {
+        $('#tabs li').on('click', function() {
+            var type = $(this).data('tab');
+
+            $('#tabs li').removeClass('is-active');
+            $(this).addClass('is-active');
+
+            $('.tab-content').hide();
+            $('#tab-' + type).show();
+        }) 
+    })
+
+</script>
