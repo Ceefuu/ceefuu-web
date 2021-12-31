@@ -24,14 +24,14 @@ end %>
                                 </div>
                                 <hr>
                                 <div class="hero-carousel" id="carousel-photo">
-                                    <% @content.photos.each do |photo| %>
-                                        <div class="carousel-item has-background image is-16by9">
-                                            <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
-                                        </div>
-                                    <% end %>
                                     <% if @content.pitch.present? %>
                                         <div class="video-container">
                                             <iframe src="https://www.youtube.com/embed/<%= @content.pitch %>" allowfullscreen></iframe>
+                                        </div>
+                                    <% end %>
+                                    <% @content.photos.each do |photo| %>
+                                        <div class="carousel-item has-background image is-16by9">
+                                            <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
                                         </div>
                                     <% end %>
                                 </div>

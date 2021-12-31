@@ -152,6 +152,16 @@ class UsersController < ApplicationController
     return redirect_to request.referrer, aler: "Cannot cancel your subscription. Contact admin."
   end
 
+  def payment
+    if current_user.stripe_id.present?
+      payment_cards = Stripe::Customer.list_sources(
+                        current_user.stripe_id,
+                        {object: 'card'},
+                      )
+      @card_detail = payment_cards.data.first
+    end
+  end
+
   private
   def current_user_params
     params.require(:user).permit(:from, :about, :status, :language, :avatar)
