@@ -6,7 +6,7 @@
             <!-- LEFT SIDE -->
             <div class="column is-two-thirds">
                 <p class="menu-label">
-                    Comments on your order
+                    Your order history
                 </p>
                 <hr>
                 <div id="comment-list">
@@ -26,7 +26,7 @@
                         <%= form_with model: Comment.new, id: "new-comment" do |f| %>
                             <%= f.hidden_field :order_id, value: @order.id %>
                             <div class="field">
-                                <%= f.text_area :content, class: "textarea", placeholder: "Type your comment" %>
+                                <%= f.text_area :content, class: "textarea", placeholder: "Type your comment or send your links" %>
                             </div>
 
                             <div class="field is-pulled-left">
@@ -34,7 +34,7 @@
                                     <label class="file-label">
                                         <%= f.file_field :attachment_file, class: "file-input" %>
                                         <span class="file-cta">
-                                            <span class="file-label">Attachment (Optional)</span>
+                                            <span class="file-label">Attachment</span>
                                         </span>
                                         <span class="file-name" id="file-name">No file selected</span>
                                     </label>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="field is-pulled-right">
-                                <%= f.submit "Post coment", class: "button is-primary" %>                          
+                                <%= f.submit "Send", class: "button is-primary" %>                          
                             </div>
                         <% end %>
                     </div>
@@ -53,7 +53,7 @@
             <div class="column">
                 <div class="card">
                     <div class="card-image">                        
-                        <figure class="image is-3by2">
+                        <figure class="image is-4by4">
                             <%= image_tag content_cover(@content) if @content %>
                             <%= image_tag 'icon_default_image.png' if @request %>
                         </figure>

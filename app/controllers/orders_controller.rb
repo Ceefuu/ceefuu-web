@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     def show
         @order = Order.find(params[:id])
         @content = @order.content_id ? Content.find(@order.content_id) : nil
-        @request = @order.request_id ? Request.find(@order.request_id) : nil
+        # @request = @order.request_id ? Request.find(@order.request_id) : nil
         @comments = Comment.where(order_id: params[:id])
     end
 

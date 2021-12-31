@@ -41,7 +41,7 @@ div.scrollmenu a:hover {
                             <span class="icon is-small is-left">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <%= text_field_tag 'q', '', class: "input is-rounded", placeholder: "Discover a topic" %>
+                            <%= text_field_tag 'q', '', class: "input", placeholder: "Try live python coding" %>
                         </div>
                     </div>
                 <% end %>
@@ -49,7 +49,6 @@ div.scrollmenu a:hover {
         </div>
 
         <div class="navbar-end">
-            <%= link_to 'Pricing', plans_path, class: "navbar-item" %>
             <%= link_to 'Create', new_content_path, class: "navbar-item" %>
             <%= link_to 'Discover', search_path, class: "navbar-item" %>
 
