@@ -5,9 +5,8 @@ class CommentsController < ApplicationController
     def create
         order = Order.find(comment_params[:order_id])
 
-        if comment_params[:content].blank?
-            # return redirect_to request.referrer, alert: "Invalid message"
-            return render json: {success: false}
+        if comment_params[:content].blank? && comment_params[:attachment_file].blank?
+            return redirect_to request.referrer, alert: "Invalid message"
         end
 
         if order.buyer_id != current_user.id && order.creator_id != current_user.id
@@ -22,12 +21,9 @@ class CommentsController < ApplicationController
         )
 
         if @comment.save
-            # redirect_to request.referrer, notice: "Comment sent..."
             CommentChannel.broadcast_to order, message: render_comment(@comment)
-            return render json: {success: true}
         else
-            # redirect_to request.referrer, alert: "Cannot create comment"
-            return render json: {success: false}
+            redirect_to request.referrer, alert: "Cannot create comment"
         end
     end
 

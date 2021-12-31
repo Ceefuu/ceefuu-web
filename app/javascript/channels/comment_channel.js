@@ -19,6 +19,7 @@ $(document).on('turbolinks:load', () => {
 
                   $form[0].reset();
                   $chatList.animate({ scrollTop: $chatList.prop("scrollHeight") }, 1000)
+                  $('#file-name').text('No file selected')
               }
           }
       )
