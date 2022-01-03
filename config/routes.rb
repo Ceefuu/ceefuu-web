@@ -65,7 +65,9 @@ Rails.application.routes.draw do
     member do
       post '/verify_phone' => 'users#verify_phone'
       patch '/update_phone' => 'users#update_phone'
+      get :following, :followers
     end
   end
 
+  resources :relationships, only: [:create, :destroy]
 end

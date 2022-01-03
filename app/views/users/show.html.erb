@@ -23,10 +23,34 @@
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
                                     <p class="title is-5"><%= @user.full_name %></p>
-                                    <% if current_user.id != @user.id %>
-                                      <a class="button is-black is-outlined is-fullwidth toggle-contact">Contact Me</a>
-                                    <% end %>
+                                    <div id="follow_form">
+                                      <% if current_user.id != @user.id %>
+                                        <% if current_user.following.include?(@user) %>
+                                          <%= render partial: 'users/unfollow', locals: { user: @user} %>
+                                        <% else %>
+                                          <%= render partial: 'users/follow', locals: { user: @user} %>
+                                        <% end %>
+                                      <% end %>
+                                    </div>
                                 </div>
+                                <hr class="h-10">
+
+                                <!-- Followers -->
+                                <article class="media">
+                                    <div class="media-content">Followers</div>
+                                    <div class="media-right">
+                                        <strong><%= @user.followers.count %></strong>
+                                    </div>
+                                </article>
+                                <hr class="h-10">
+
+                                <!-- Following -->
+                                <article class="media">
+                                    <div class="media-content">Following</div>
+                                    <div class="media-right">
+                                        <strong><%= @user.following.count %></strong>
+                                    </div>
+                                </article>
                                 <hr class="h-10">
                                 
                                 <!-- Member -->
