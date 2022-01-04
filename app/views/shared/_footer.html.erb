@@ -26,16 +26,38 @@
     transition: color .3s;
 }
 
-    </style>
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait)
+
+{
+.d-column-tablet-p {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+}
+
+.is-align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+
+@media only screen and (max-width: 767px){
+.d-column-mobile {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+}
+</style>
     
     <footer class="footer footer-left">
         <div class="container">
             <div class="columns is-vcentered">
-                <div class="column is-8 is-hidden-mobile">
+                <div class="column is-8">
                     <div class="is-flex d-column-mobile d-column-tablet-p is-align-items-center">
-                        <a class="footer-logo-left is-square" href="#">
-                            <%= image_tag("website-logo-icon.png") %>
-                        </a>
                         <ul class="py-2">
                             <li class="inline-block px-2">
                                 <%= link_to 'Terms', terms_pages_path, class: "footer-link"  %>
@@ -49,7 +71,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="column is-4 has-text-centered">
+                <div class="column is-4 has-text-right has-text-centered-mobile">
                     <p class="subtitle footer-text medium:text-right is-6" data-config-id="copyright">&copy; 2021 Ceefuu, Inc. All Rights Reserved</p>
                 </div>
             </div>

@@ -1,41 +1,8 @@
 <style>
 
-.intro {
-  padding: 3rem 0;
-  padding-bottom: 1rem;
-  text-align: center;
-}
-
-.container {
-  max-width: 700px;
-}
-
-.features {
-  padding: 4rem 0;
-}
-.box.cta {
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-}
-
-.card {
-  overflow: hidden;
-  background: ghostwhite;
-  color: var(--bg);
-}
-
-.card.large {
-  border-radius: 5px;
-}
-
-.title.no-padding {
-  margin-bottom: 0 !important;
-}
-
 .section-feature-grey{
 
-    background-color:#fbfbfb
+    background-color:#fbfbfb;
 
 }
 
@@ -53,10 +20,25 @@
 
 .columns.is-vcentered{-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 
-.title.is-narrow{margin-bottom:0 !important}
+.title.is-narrow{margin-bottom:0;}
 
-.py-6{padding-top:3rem !important;padding-bottom:3rem !important}
+.py-6{padding-top:3rem !important;padding-bottom:1rem;}
+.py-2 {
+    text-align:left;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+
+.b-centered-tablet-p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 540px;
+}
+
+}
 </style>
 
 <%- title "Ceefuu: Create and Sell Premium Content" %>
@@ -64,24 +46,24 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<section class="hero is-small is-white is-center">
+<section class="hero is-medium is-white is-center">
     <div class="hero-body">
         <div class="container"><br><br>
-            <h1 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">
-                Where top creators<br>sell premium content.
+            <h1 class="title has-text-dark has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">
+                Premium content from world-class creators
             </h1>
              
-            <h2 class="subtitle is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">
-                Get paid for creating valuable content.
+            <h2 class="subtitle has-text-dark is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">
+                Unlock the true potential of your content.
             </h2><br>
 
         <% if (!user_signed_in?) %>
             <%= form_tag new_user_registration_path, method: :get, class: "field has-addons has-addons-centered" do %>
                 <div class="control">
-                    <%= text_field_tag 'username', '', class: "input is-medium is-dark expanded", placeholder: "Claim your username", required: true %>
+                    <%= text_field_tag 'username', '', class: "input is-dark", placeholder: "Claim your username"%>
                 </div>
                 <div class="control">
-                    <button class="button is-dark is-medium" type="submit"><i class="fa fa-angle-double-right"></i></button>
+                    <button class="button is-black" type="submit"><i class="fa fa-angle-double-right"></i></button>
                 </div>
             <% end %>
 
@@ -204,99 +186,42 @@
     </div>
 </section>
 
-        <div class="intro column is-8 is-offset-2">
-            <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">Earn by creating what you love</h2>
-        </div>
 
-<section class="container">
-            <div class="columns features">
-                <div class="column is-4">
-                    
-                        <div class="card-image">
-                            <figure class="image is-16by9">
-                                <%= image_tag("creating-content.jpeg") %>
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4 class="has-text-weight-bold is-size-4 has-text-centered">Leo integer malesuada nunc vel</h4>
-                                <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam.</p>
-                                
-                            </div>
-                        </div>
-                    
-                </div>
-                <div class="column is-4">
-                    
-                        <div class="card-image">
-                            <figure class="image is-16by9">
-                                <%= image_tag("creating-content.jpeg") %>
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4 class="has-text-weight-bold is-size-4 has-text-centered">Leo integer malesuada nunc vel</h4>
-                                <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam.</p>
-                                
-                            </div>
-                        </div>
-                    
-                </div>
-                <div class="column is-4">
-                    
-                        <div class="card-image">
-                             <figure class="image is-16by9">
-                                <%= image_tag("creating-content.jpeg") %>
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <h4 class="has-text-weight-bold is-size-4 has-text-centered">Leo integer malesuada nunc vel</h4>
-                                <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam.</p>
-                               
-                            </div>
-                        </div>
-                    
-                </div>
-            </div>
-</section>
-
-<section class="section section-feature-grey is-small">
+    <section class="section section-feature-grey is-small m-t-100">
         <div class="container">
     
             <div class="columns is-vcentered app-side">
                 <div class="column is-8 is-offset-2">
-                    <h3 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">An intuitive app</h3>
-                    <p class="subtitle is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime contra Aristonem dicuntur a Chryippo.</p><br>
+                    <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile main-title">Great content matters</h2>
+                    <p class="subtitle is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">We believe that great content is valuable and what you create matters. Our platform will enable creators to make a living by selling premium content directly to their audience.</p><br>
                     <div class="container has-text-centered">
                         <%= link_to  "Start Creating", new_content_path, class: "button is-dark" %>
                     </div>
                 </div>
             </div>
         </div>
-</section>
+    </section>
+
 
  <!--Features-->
     <div class="section">
         <div class="container">
     
             <div class="has-text-centered py-6">
-                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">Premium Sample</h2>
-                <p class="subtitle is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">Cleanly designed and carefully crafted</p>
+                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">Create what you love</h2>
+                <p class="subtitle is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A new medium for selling digital content</p>
             </div>
     
             <div class="py-6 small:mb-10">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6">
-                        <%= image_tag "illustrations/feature-1.svg", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-1.gif", class: "max-w-4 mx-auto is-block" %>
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow">Bulma + Alpine JS</h3>
-                        <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illud
-                            non continuo, ut aeque
-                            incontentae. Duo Reges: constructio interrete. Si qua in iis corrigere voluit, deteriora fecit.
-                            Sit enim idem caecus, debilis. </p>
+                        <h3 class="title is-4 is-narrow has-text-black">Create a compelling pitch</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet  b-centered-tablet-p">Come up with an effective one minute pitch - a value proposition of what people get when they buy your digital content. Give your audience a teaser of what you are selling. Be unique, and keep experimenting to see what works.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -304,18 +229,15 @@
             <div class="py-6 small:mb-10">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6 is-hidden-desktop">
-                        <%= image_tag "illustrations/feature-2.svg", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-2.gif", class: "max-w-4 mx-auto is-block" %>
                     </div>
                     <div class="column is-5 is-offset-1">
-                        <h3 class="title is-4 is-narrow">Built in JSON search</h3>
-                        <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illud
-                            non continuo, ut aeque
-                            incontentae. Duo Reges: constructio interrete. Si qua in iis corrigere voluit, deteriora fecit.
-                            Sit enim idem caecus, debilis. 
+                        <h3 class="title is-4 is-narrow has-text-black">Share it with your audience</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet b-centered-tablet-p">Share your Ceefuu profile with your audience and start generating revenue. From podcast links to top 10 tips, sell your premium content with just a few clicks. We manage the technology, so you can focus on doing what you do the best.
                         </p>
                     </div>
                     <div class="column is-6 is-hidden-mobile">
-                        <%= image_tag "illustrations/feature-2.svg", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-2.gif", class: "max-w-4 mx-auto is-block" %>
                     </div>
                 </div>
             </div>
@@ -323,15 +245,12 @@
             <div class="py-6">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6">
-                        <%= image_tag "illustrations/feature-3.gif", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-3.gif", class: "max-w-4 mx-auto is-block" %>
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow">Loading Placeholders</h3>
-                        <p class="py-2 max-w-4 text-medium b-centered-tablet-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illud
-                            non continuo, ut aeque
-                            incontentae. Duo Reges: constructio interrete. Si qua in iis corrigere voluit, deteriora fecit.
-                            Sit enim idem caecus, debilis. </p>
+                        <h3 class="title is-4 is-narrow has-text-black">Everything in one place</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet b-centered-tablet-p">Ceefuu takes the hassle out of running a digital content business. Our platform provides creators with tools to track earnings, manage all orders, and build a meaningful relationship with the audience.</p>
                     </div>
                 </div>
             </div>
