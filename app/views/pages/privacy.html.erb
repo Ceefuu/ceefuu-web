@@ -1,16 +1,14 @@
-<%- title "Privacy Policy" %> <div class="container">
+<% content_for(:html_title) { 'Privacy Policy - Ceefuu' } %>
   <!-- START ARTICLE FEED -->
   <section class="articles">
     <div class="column is-8 is-offset-2">
       <!-- START ARTICLE -->
-      <div class="card article">
-        <div class="card-content">
           <div class="media">
-            <div class="media-content has-text-centered">
+            <div class="media-content has-text-centered"><br>
               <p class="title article-title">Privacy Policy</p>
               <div class="tags has-addons level-item">
                 <span class="tag is-rounded">Last updated:&nbsp;03/31/2022</span>
-              </div>
+              </div><br>
             </div>
           </div>
           <div class="content article-body">
@@ -387,5 +385,5 @@
             <p>By email: info@ceefuu.com.</p>
             <p>&nbsp;</p>
           </div>
-        </div>
-      </div><%= render  "shared/footer" %>
+</section>
+<%= render  "shared/footer" %>

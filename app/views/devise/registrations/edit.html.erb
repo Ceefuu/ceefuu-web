@@ -1,5 +1,5 @@
 <%= render  "shared/navbar" %>
-<%- title "Edit your profile: Ceefuu" %>
+<% content_for(:html_title) { 'Edit your profile' } %>
 <section class="hero is-lwhite is-fullheight">
   <div class="hero-body">
     <div class="container">
@@ -41,7 +41,7 @@
               </div>
 
               <div class="field">
-                <%= f.submit "Update", class: "button is-dark is-fullwidth" %>
+                <%= f.submit "Update", class: "button is-black is-fullwidth" %>
               </div>
               <% end %>
 

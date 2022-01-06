@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable
+         :omniauthable, :confirmable
 
   validates :full_name, presence: true, length: {maximum: 50}
   validates :username, uniqueness: true, if: -> { username.present? }

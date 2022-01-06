@@ -1,16 +1,114 @@
-<h2>Resend confirmation instructions</h2>
+<style>
+:root {
+	--brandColor: hsl(166, 67%, 51%);
+	--background: rgb(247, 247, 247);
+	--textDark: hsla(0, 0%, 0%, 0.66);
+	--textLight: hsla(0, 0%, 0%, 0.33);
+}
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+body {
+	background: var(--background);
+	height: 100vh;
+	color: var(--textDark);
+}
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
+.field:not(:last-child) {
+	margin-bottom: 1rem;
+}
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
+.register {
+	margin-top: 3rem;
+	background: white;
+	border-radius: 10px;
+}
 
-<%= render "devise/shared/links" %>
+.left,
+.right {
+	padding: 4.5rem;
+}
+
+.left {
+	border-right: 5px solid var(--background);
+}
+
+.left .title {
+	font-weight: 800;
+	letter-spacing: -2px;
+}
+
+.left .colored {
+	color: var(--brandColor);
+	font-weight: 500;
+	margin-top: 1rem !important;
+	letter-spacing: -1px;
+}
+
+.left p {
+	color: var(--textLight);
+	font-size: 1.15rem;
+}
+
+.right .title {
+	font-weight: 800;
+	letter-spacing: -1px;
+}
+
+.right .description {
+	margin-top: 1rem;
+	margin-bottom: 1rem !important;
+	color: var(--textLight);
+	font-size: 1.15rem;
+}
+
+.right small {
+	color: var(--textLight);
+}
+
+input {
+	font-size: 1rem;
+}
+
+input:focus {
+	border-color: var(--brandColor) !important;
+	box-shadow: 0 0 0 1px var(--brandColor) !important;
+}
+
+.fab,
+.fas {
+	color: var(--textLight);
+	margin-right: 1rem;
+}
+</style>
+<% content_for(:html_title) { 'Resend confirmation instructions' } %>
+	<section class="container">
+		<div class="columns is-multiline">
+			<div class="column is-8 is-offset-2 register">
+				<div class="columns">
+					<div class="column left">
+						<h1 class="title is-1">Ceefuu</h1>
+						<h2 class="subtitle colored is-4">A new medium for selling digital content.</h2>
+						<p class="has-text-black">We believe that great content is valuable and what you create matters. Our platform will enable creators to make a living by selling extraordinary content directly to their audience.</p>
+					</div>
+					<div class="column right">
+						<h1 class="title is-4">Resend email confirmation</h1>
+						<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+							<%= render "devise/shared/error_messages", resource: resource %>
+								<div class="field">
+									<div class="control">
+										<%= f.label :email %>
+											<br />
+											<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+									</div>
+								</div>
+								<div class="field">
+									<div class="control">
+										<%= f.submit "Resend confirmation instructions", class: "button is-block is-black is-fullwidth" %>
+									</div>
+								</div>
+								<% end %>
+									<br> <small class="has-text-black">Already have an account? <%= link_to  "Login", new_user_session_path%></small>
+									<br> </div>
+				</div>
+			</div>
+		</div>
+	</section>

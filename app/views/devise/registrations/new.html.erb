@@ -80,15 +80,15 @@
     }
 
   </style>
-  <%- title "Join Ceefuu" %>
+  <% content_for(:html_title) { 'Join Ceefuu: Sign up to continue' } %>
     <section class="container">
       <div class="columns is-multiline">
         <div class="column is-8 is-offset-2 register">
           <div class="columns">
-            <div class="column left is-hidden-mobile">
-              <h1 class="title is-1">Super Cool Website</h1>
-              <h2 class="subtitle colored is-4">Lorem ipsum dolor sit amet.</h2>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis ex deleniti aliquam tempora libero excepturi vero soluta odio optio sed.</p>
+            <div class="column left">
+              <h1 class="title is-1">Ceefuu</h1>
+              <h2 class="subtitle colored is-4">A new medium for selling digital content.</h2>
+              <p class="has-text-black">We believe that great content is valuable and what you create matters. Our platform will enable creators to make a living by selling extraordinary content directly to their audience.</p>
             </div>
             <div class="column right">
               <h1 class="title is-4">Join Ceefuu</h1>
@@ -133,7 +133,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <%= f.submit "Sign up", class: "button is-block is-dark is-fullwidth" %>
+                    <%= f.submit "Sign up", class: "button is-block is-black is-fullwidth" %>
                   </div>
                 </div>
                 <% end %>
@@ -141,26 +141,6 @@
                 <small class="has-text-black">Already have an account? <%= link_to  "Login", new_user_session_path%></small><br>
             </div>
           </div>
-        </div>
-        <div class="column is-8 is-offset-2">
-          <br>
-          <nav class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <span class="icon">
-                  <i class="fab fa-twitter"></i>
-                </span> &emsp;
-                <span class="icon">
-                  <i class="fab fa-instagram"></i>
-                </span> &emsp;
-              </div>
-            </div>
-            <div class="level-right">
-              <small class="level-item" style="color: var(--textLight)">
-                <p>Copyright &copy; 2021 Ceefuu. Rights Reserved</p>
-              </small>
-            </div>
-          </nav>
         </div>
       </div>
     </section>
