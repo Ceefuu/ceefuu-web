@@ -127,7 +127,7 @@ class ContentsController < ApplicationController
   end
 
   def set_content
-    @content = Content.find(params[:id])
+    @content = Content.friendly.find(params[:id])
   end
 
   def is_authorised
@@ -138,4 +138,8 @@ class ContentsController < ApplicationController
     params.require(:content).permit(:title, :pitch, :description, :active, :category_id, :has_single_price, 
                                 pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])
   end
+
+  def should_generate_new_friendly_id?
+    title_changed?
+    end
 end

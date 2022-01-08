@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def search
     @categories = Category.all
-    @category = Category.find(params[:category]) if params[:category].present?
+    @category = Category.friendly.find(params[:category]) if params[:category].present?
 
     # @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
 

@@ -28,6 +28,7 @@ gem 'trestle-search', '=0.4.3'
 gem 'trestle-tinymce', '=0.3.1'
 
 gem 'activemerchant', '=1.124.0'
+gem 'friendly_id', '~> 5.4.0'
 
 
 # Use Redis adapter to run Action Cable in production

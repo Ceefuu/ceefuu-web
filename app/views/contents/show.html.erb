@@ -1,6 +1,25 @@
-<% content_for :page_title do
-  @content.title
-end %>
+<style>
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+<% content_for(:html_title) { @content.title } %>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
@@ -23,14 +42,14 @@ end %>
                                     <p class="title is-4"><%= @content.title %></p>
                                 </div>
                                 <hr>
-                                <div class="hero-carousel" id="carousel-photo">
+                                <div class="carousel" id="carousel-photo">
                                     <% if @content.pitch.present? %>
                                         <div class="video-container">
                                             <iframe src="https://www.youtube.com/embed/<%= @content.pitch %>" allowfullscreen></iframe>
                                         </div>
                                     <% end %>
                                     <% @content.photos.each do |photo| %>
-                                        <div class="carousel-item has-background image is-16by9">
+                                        <div class="carousel-item has-background image is-5by3">
                                             <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
                                         </div>
                                     <% end %>
@@ -96,9 +115,9 @@ end %>
                                                 </p>
                                             </div>
                                             <% if (!user_signed_in? && @content.active) || (user_signed_in? && @content.active && @content.user_id != current_user.id) %>
-                                                <%= link_to "Continue ($#{p.price})", checkout_path(id: @content.id, pricing_type: p.pricing_type), class: "button is-fullwidth is-dark" %>
+                                                <%= link_to "Continue ($#{p.price})", checkout_path(id: @content.id, pricing_type: p.pricing_type), class: "button is-fullwidth is-black" %>
                                             <% else %>
-                                                <button class="button is-fullwidth is-dark" disabled>Not Available</button>  
+                                                <button class="button is-fullwidth is-black" disabled>Not Available</button>  
                                             <% end %>
                                             
                                         </div>
@@ -121,23 +140,11 @@ end %>
                             </div>
                             <div class="card-content f-15">
                                 <div class="content has-text-centered">
-                                  <p class="title is-5"><%= @content.user.full_name %></p>
-                                  <div id="follow_form">
-                                    <% if current_user.following.include?(@content.user) %>
-                                      <%= render partial: 'users/unfollow', locals: { user: @content.user} %>
-                                    <% else %>
-                                      <%= render partial: 'users/follow', locals: { user: @content.user} %>
-                                    <% end %>
-                                  </div>
-                                </div>
-                                <article class="media">
-                                    <div class="media-content">
-                                        <i class="fas fa-user m-r-5"></i> Member since
-                                    </div>
-                                    <div class="media-right">
-                                        <%= @content.user.created_at.strftime('%b %Y') %>
-                                    </div>
-                                </article>
+                                <%= link_to users_path do %>
+                                  <p class="title is-5"><%= @content.user.full_name %></p> 
+                                <% end %> 
+                            </div><br/>
+                            
                                 <article class="media">
                                     <div class="media-content">
                                         <i class="fas fa-map-marker-alt m-r-5"></i> From
@@ -161,6 +168,7 @@ end %>
         </div>
     </div>
 </section>
+<%= render "shared/footer" %>
 
 <script>
     BulmaCarousel.attach('#carousel-photo', {

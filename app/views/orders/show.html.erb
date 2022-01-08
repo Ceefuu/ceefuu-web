@@ -1,4 +1,4 @@
-<%- title "Orders" %>
+<% content_for(:html_title) { 'Orders' } %>
 <section class="section" data-channel-subscribe="order" data-order-id="<%= @order.id %>">
     <div class="container">
         <div class="columns">

@@ -13,12 +13,12 @@
 
     <p class="control">
         <% if @step != 5 %>
-            <%= f.submit 'Save & Continue', class: "button is-dark" %>
+            <%= f.submit 'Save & Continue', class: "button is-black" %>
         <% else %>
             <%= link_to 'Publish', content_path(@content.id, content: {active: true}, step: @step), 
                         method: :put, 
                         data: {confirm: "Do you want to publish this content?"},
-                        class: "button is-dark" %>
+                        class: "button is-black" %>
         <% end %>
     </p>
 </div>

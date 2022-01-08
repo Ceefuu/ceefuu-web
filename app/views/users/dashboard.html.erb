@@ -1,3 +1,24 @@
+<style>
+.ellipsis {
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  /*   max-width: 400px; */
+  /*   height: 109.2px; */
+  /* Fallback for non-webkit */
+  margin: 0 auto;
+  /*   font-size: 26px; */
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-ellipsis-2 {
+  -webkit-line-clamp: 2;
+}
+</style>
+<% content_for(:html_title) { 'Dashboard' } %>
 <section class="section">
     <div class="container">
         <div class="columns">
@@ -24,7 +45,7 @@
                                     <p class="title is-5"><%= current_user.full_name %></p>
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
                                         <div class="file">
-                                            <label class="button is-dark is-outlined is-fullwidth">
+                                            <label class="button is-black is-outlined is-fullwidth">
                                                 <%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
                                                 <i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
                                             </label>
@@ -33,19 +54,10 @@
                                 </div>
                                 <hr class="h-10">
                                 
-                                <!-- Member -->
-                                <article class="media">
-                                    <div class="media-content">Member since</div>
-                                    <div class="media-right">
-                                        <strong><%= current_user.created_at.strftime('%b %Y') %></strong>
-                                    </div>
-                                </article>
-                                <hr class="h-10">
-                                
                                 <!-- From -->
                                 <article>
                                     <div class="media">
-                                        <div class="media-content">Country</div>
+                                        <div class="media-content">Location</div>
                                         <div class="media-right">
                                             <strong><%= current_user.from %></strong> <i class="toggle far fa-edit" aria-controls="user-from"></i>
                                         </div>
@@ -57,7 +69,7 @@
                                                 <%= f.text_field :from, autofocus: true, autocomplete: 'form', class: 'input'%>
                                             </div>
                                             <a class="toggle button is-light" aria-controls="user-from">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-dark" %>
+                                            <%= f.submit "Save", class: "button is-black" %>
                                         <% end %>
                                     </div>
 
@@ -67,7 +79,7 @@
                                 <!-- Online Status -->
                                 <article>
                                     <div class="media">
-                                        <div class="media-content">Online Status</div>
+                                        <div class="media-content">Status</div>
                                         <div class="media-right">
                                             <strong><% if current_user.status %> Online <% else %> Offline <% end %></strong> <i class="toggle far fa-edit" aria-controls="user-status"></i>
                                         </div>
@@ -79,7 +91,7 @@
                                                 <%= f.select(:status, options_for_select([["Online", true], ["Offline", false]]), {}, {class: "select is-fullwidth"}) %>
                                             </div>
                                             <a class="toggle button is-light" aria-controls="user-status">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-dark" %>
+                                            <%= f.submit "Save", class: "button is-black" %>
                                         <% end %>
                                     </div>
                                 </article>
@@ -117,7 +129,7 @@
                                     <div class="media">
                                         <div class="media-content">
                                             <p>
-                                                <strong>About Yourself</strong>
+                                                <strong>Bio</strong>
                                                 <br>
                                                 <%= current_user.about %>
                                             </p>
@@ -133,7 +145,7 @@
                                                 <%= f.text_area :about, autofocus: true, autocomplete: 'form', class: 'input'%>
                                             </div>
                                             <a class="toggle button is-light" aria-controls="user-about">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-dark" %>
+                                            <%= f.submit "Save", class: "button is-black" %>
                                         <% end %>
                                     </div>
                                 </article>
@@ -160,7 +172,7 @@
                                                 <%= f.text_field :language, autofocus: true, autocomplete: 'form', class: 'input'%>
                                             </div>
                                             <a class="toggle button is-light" aria-controls="user-language">Cancel</a>
-                                            <%= f.submit "Save", class: "button is-dark" %>
+                                            <%= f.submit "Save", class: "button is-black" %>
                                         <% end %>
                                     </div>
 
@@ -175,7 +187,7 @@
                                             <% if current_user.provider %>
                                                 <span class="has-text-success">Facebook verified</span>
                                             <% else %>
-                                                <%= link_to 'Connect to Facebook', user_facebook_omniauth_authorize_path, class: "has-text-danger" %>
+                                                <%= link_to 'Connect to Facebook', user_facebook_omniauth_authorize_path, class: "has-text-black" %>
                                             <% end %>
                                         </p>
                                     </div>
@@ -204,7 +216,7 @@
                                 </div>
 
                                 <div class="card-content">
-                                    <strong>Create new content</strong>
+                                    <strong>Create new</strong>
                                 </div>    
 
                             </div>
@@ -212,7 +224,7 @@
                     </div>
 
 
-                    <!-- Sample Content -->
+                    <!-- Content -->
                     <% current_user.contents.each do |content| %>
 
                         <div class="column is-one-third">
@@ -220,25 +232,32 @@
 
                                 <div class="card-image">
                                     <%= link_to edit_content_path(content) do %>
-                                        <figure class="image is-4by3">
+                                        <figure class="image is-5by3">
                                             <%= image_tag content_cover(content) %>
                                         </figure>
                                     <% end %>
                                 </div>
 
                                 <div class="card-content p-t-5 p-b-5">
-                                    <p class="subtitle is-6 m-b-5"><%= link_to content.title, content_path(content) %></p>
+                                    <p class="subtitle is-6 m-b-5 ellipsis is-ellipsis-2"><%= link_to content.title, content_path(content), class: "has-text-black" %></p>
                                     <span class="star-review"><i class="fa fa-star"></i>
                                         <%= content.average_rating %>
                                         <span class="has-text-dark">(<%= content.reviews.count %>)</span>
                                     </span>                                        
                                 </div>
 
-                                <footer class="card-footer">
-                                    <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %>
+                        <footer class="card-footer">
+                                <span class="card-footer-item">
+                                    <%= link_to users_path(content.user) do %>
+                                        <figure class="image is-32x32">
+                                            <%= image_tag avatar_url(content.user), class: "is-rounded" %>
+                                        </figure>
+                                    <% end %>
+                                </span>
 
-                                    <a class="has-text-danger is-block card-footer-item has-text-centred">
-                                        <% if !basic_price.nil? %>
+                            <a class="has-text-black is-block card-footer-item has-text-centered">
+                                <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %> 
+                                <% if !basic_price.nil? %>
                                             <span class="small-title">STARTING AT</span> 
                                             <strong>$<%= basic_price.price %></strong>                                            
                                         <% else %>
@@ -246,8 +265,8 @@
                                                 <span class="small-title has-text-dark">NO PRICING YET</span>
                                             </strong>
                                         <% end %>
-                                    </a>
-                                </footer>  
+                            </a>
+                        </footer>  
                                 
                             </div>
                         </div>
@@ -260,4 +279,4 @@
         </div>
     </div>
 </section>
-<%= render  "shared/footer" %>
+<%= render "shared/footer" %>

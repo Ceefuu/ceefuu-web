@@ -1,4 +1,4 @@
-<%- title "Earnings" %>
+<% content_for(:html_title) { 'Earnings' } %>
 <section class="section">
     <div class="container">
         <p class="title">Earnings</p>
@@ -44,7 +44,7 @@
                                     <%= f.number_field :amount, value: 0, class: "input" %>
                                 </div>
                                 <div class="field">
-                                    <%= f.submit "Send Request", class: "button is-dark" %>
+                                    <%= f.submit "Send Request", class: "button is-black" %>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                 <td><%= t.transaction_type %></td>
                                 <td><span class="tag"><%= t.status %></span></td>
                                 <td>
-                                    <span class="<%= current_user.id == t.buyer_id ? 'has-text-dark' : 'has-text-success' %>">
+                                    <span class="<%= current_user.id == t.buyer_id ? 'has-text-black' : 'has-text-success' %>">
                                         <%= current_user.id == t.buyer_id ? '-' : '+' %>
                                         $<%= current_user.id == t.buyer_id ? t.amount : (t.amount / 1.1).round(2) %>
                                     </span>

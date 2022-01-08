@@ -1,3 +1,44 @@
+<style>
+.ellipsis {
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  /*   max-width: 400px; */
+  /*   height: 109.2px; */
+  /* Fallback for non-webkit */
+  margin: 0 auto;
+  /*   font-size: 26px; */
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-ellipsis-2 {
+  -webkit-line-clamp: 2;
+}
+
+/* Flexible iFrame */
+
+.flexible-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.flexible-container iframe,
+.flexible-container object,
+.flexible-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
 <% @contents.each do |content| %>
     <div class="column is-one-third">
         <div class="card">
@@ -9,30 +50,20 @@
                     </figure> -->
                     <div class="column is-full">   
                         <div class="card">
-                            
-                                <div class="hero-carousel" id="carousel-photo">
-                                    <% if content.pitch.present? %>
-                                        <div class="video-container">
-                                            <iframe src="https://www.youtube.com/embed/<%= content.pitch %>" allowfullscreen></iframe>
-                                        </div>
-                                    <% end %>
-                                    <% content.photos.each do |photo| %>
-                                        <div class="carousel-item has-background image is-16by9">
-                                            <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
-                                        </div>
-                                    <% end %>
+                            <% if content.pitch.present? %>
+                                <div class="flexible-container">
+                                    <iframe src="https://www.youtube.com/embed/<%= content.pitch %>" allowfullscreen></iframe>
                                 </div>
-                            
+                                <% end %>
                         </div>
                     </div>
-                <%# end %>
             </div>
 
             <div class="card-content p-t-5 p-b-5">
-                <p class="subtitle is-6 m-b-5"><%= link_to content.title.truncate(20), content_path(content) %></p>
+                <p class="subtitle is-6 m-b-5 ellipsis is-ellipsis-2"><%= link_to content.title, content_path(content), class: "has-text-black" %></p>
                 <span class="star-review"><i class="fa fa-star"></i>
                     <%= content.average_rating %>
-                    <span class="has-text-dark">(<%= content.reviews.count %>)</span>
+                    <span class="has-text-black">(<%= content.reviews.count %>)</span>
                 </span>                                        
             </div>
 
@@ -44,7 +75,8 @@
                         </figure>
                     <% end %>
                 </span>
-                <a class="has-text-dark is-block card-footer-item has-text-justify-center">
+
+                <a class="has-text-black is-block card-footer-item has-text-centered">
                     <span class="small-title">STARTING AT</span> 
                     <strong>$<%= content.price %></strong>
                 </a>

@@ -1,42 +1,42 @@
-<%- title "Edit Content" %>
+<% content_for(:html_title) { 'Create new content' } %>
 <section class="section">
   <div class="container">
     <div class="steps" id="stepsDemo">
 
       <!-- 5 STEPS -->
-      <div class="step-item <%= 'is-active' if @step == 1 %> <%= 'is-completed' if @step > 1 %>">
-        <div class="step-marker">1</div>
-        <div class="step-details">
-          <p class="step-title">Overview</p>
+      <div class="step-item <%= 'is-active' if @step == 1 %> <%= 'is-completed' if @step > 1 %> is-hidden-mobile">
+        <div class="step-marker is-hidden-mobile">1</div>
+        <div class="step-details is-hidden-mobile">
+          <p class="step-title is-hidden-mobile">Overview</p>
         </div>
       </div>
-      <div class="step-item <%= 'is-active' if @step == 2 %> <%= 'is-completed' if @step > 2 %>">
-        <div class="step-marker">2</div>
-        <div class="step-details">
-          <p class="step-title">Pricing</p>
+      <div class="step-item <%= 'is-active' if @step == 2 %> <%= 'is-completed' if @step > 2 %> is-hidden-mobile">
+        <div class="step-marker is-hidden-mobile">2</div>
+        <div class="step-details is-hidden-mobile">
+          <p class="step-title is-hidden-mobile">Pricing</p>
         </div>
       </div>
-      <div class="step-item <%= 'is-active' if @step == 3 %> <%= 'is-completed' if @step > 3 %>">
-        <div class="step-marker">3</div>
-        <div class="step-details">
-          <p class="step-title">Description</p>
+      <div class="step-item <%= 'is-active' if @step == 3 %> <%= 'is-completed' if @step > 3 %> is-hidden-mobile">
+        <div class="step-marker is-hidden-mobile">3</div>
+        <div class="step-details is-hidden-mobile">
+          <p class="step-title is-hidden-mobile">Description</p>
         </div>
       </div>
-      <div class="step-item <%= 'is-active' if @step == 4 %> <%= 'is-completed' if @step > 4 %>">
-        <div class="step-marker">4</div>
-        <div class="step-details">
-          <p class="step-title">Gallery</p>
+      <div class="step-item <%= 'is-active' if @step == 4 %> <%= 'is-completed' if @step > 4 %> is-hidden-mobile">
+        <div class="step-marker is-hidden-mobile">4</div>
+        <div class="step-details is-hidden-mobile">
+          <p class="step-title is-hidden-mobile">Gallery</p>
         </div>
       </div>
-      <div class="step-item <%= 'is-active' if @step == 5 %> <%= 'is-completed' if @step > 5 %>">
-        <div class="step-marker">5</div>
-        <div class="step-details">
-          <p class="step-title">Publish</p>
+      <div class="step-item <%= 'is-active' if @step == 5 %> <%= 'is-completed' if @step > 5 %> is-hidden-mobile">
+        <div class="step-marker is-hidden-mobile">5</div>
+        <div class="step-details is-hidden-mobile">
+          <p class="step-title is-hidden-mobile">Publish</p>
         </div>
       </div>
 
       <!-- FORM TO CREATE A NEW CONTENT HERE-->
-      <%= form_for @content, html: {class: "steps-content m-l-100 m-r-100"} do |f| %>
+      <%= form_for @content, html: {class: "steps-content m-l-0 m-r-0"} do |f| %>
         <%= hidden_field_tag 'step', @step %>
         
         <%= render 'step1', f: f %>

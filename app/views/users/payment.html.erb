@@ -31,7 +31,7 @@
   background-color: #fefde5 !important;
 }
 </style>
-<%- title "Payment method" %>
+<% content_for(:html_title) { 'Add Payment Details' } %>
 <section class="section">
     <div class="container">
         <div class="columns is-centered">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="field is-grouped is-grouped-centered">
                         <%= f.submit "#{current_user.stripe_id ? "Update Card" : "Add Card"}", 
-                                        class: "button is-dark m-t-20" %>
+                                        class: "button is-black m-t-20" %>
                     </div>
                 <% end %>
             </div>
