@@ -44,7 +44,7 @@ class PagesController < ApplicationController
     end
 
     @contents = Content
-                .select("contents.id, contents.title, contents.user_id, MIN(pricings.price) AS price, pitch")
+                .select("contents.id, contents.title, contents.user_id, MIN(pricings.price) AS price, pitch, slug")
                 .joins(:pricings)
                 .where(query_condition)
                 .group("contents.id")
