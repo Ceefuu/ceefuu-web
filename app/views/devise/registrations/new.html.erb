@@ -127,6 +127,7 @@
 
                  <div class="field">
                   <div class="control">
+                    <%= f.check_box :terms_of_service %>
                     <small class="has-text-black">I accept the <%= link_to 'Terms', terms_pages_path %>  and <%= link_to 'Privacy', privacy_pages_path %> </small>
                   </div>
                 </div>
@@ -138,7 +139,7 @@
                 </div>
                 <% end %>
                 <br>
-                <small class="has-text-black">Already have an account? <%= link_to  "Login", new_user_session_path%></small><br>
+                <small class="has-text-black">Already have an account? <%= link_to  "Login", new_user_session_path, data: { turbolinks: false }%></small><br>
             </div>
           </div>
         </div>
