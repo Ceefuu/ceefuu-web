@@ -3,11 +3,13 @@ class OrdersController < ApplicationController
     before_action :is_authorised, only: [:show]
     
     def create
-        content = Content.find(params[:content_id])
+        content = Content.friendly.find(params[:content_id])
         pricing = content.pricings.find_by(pricing_type: params[:pricing_type])
 
         if (pricing && !content.has_single_price) || (pricing && pricing.basic? && content.has_single_price)
             if intent(content, pricing)
+                OrderMailer.with(buyer_user: current_user).order_buyer_email.deliver_now
+                OrderMailer.with(creator_user: content.user).order_creator_email.deliver_now
                 return redirect_to buying_orders_path
             end
         else
@@ -30,6 +32,8 @@ class OrdersController < ApplicationController
 
         if !@order.completed?
             if @order.completed!
+                OrderMailer.with(order: @order).mark_as_complete_buyer_email.deliver_now
+                OrderMailer.with(order: @order).mark_as_complete_creator_email.deliver_now
                 flash[:notice] = "Saved..."
             else
                 flash[:aler] = "Something went wrong..."

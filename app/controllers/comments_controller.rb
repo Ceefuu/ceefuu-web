@@ -21,7 +21,13 @@ class CommentsController < ApplicationController
         )
 
         if @comment.save
+            order = @comment.order
             CommentChannel.broadcast_to order, message: render_comment(@comment)
+            if current_user.id == order.buyer.id
+              CommentMailer.with(comment: @comment, order: order).creator_comment_email.deliver_now
+            elsif current_user.id == order.creator.id
+              CommentMailer.with(comment: @comment, order: order).buyer_comment_email.deliver_now
+            end
         else
             redirect_to request.referrer, alert: "Cannot create comment"
         end
