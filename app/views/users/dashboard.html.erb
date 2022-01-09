@@ -248,10 +248,10 @@
 
                         <footer class="card-footer">
                                 <span class="card-footer-item">
-                                    <%= link_to users_path(content.user) do %>
-                                        <figure class="image is-32x32">
-                                            <%= image_tag avatar_url(content.user), class: "is-rounded" %>
-                                        </figure>
+                                    <%= link_to edit_content_path(content) do %>
+                                        <small class="has-text-black">
+                                            Edit
+                                        </small>
                                     <% end %>
                                 </span>
 
@@ -259,7 +259,7 @@
                                 <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %> 
                                 <% if !basic_price.nil? %>
                                             <span class="small-title">STARTING AT</span> 
-                                            <strong>$<%= basic_price.price %></strong>                                            
+                                            <strong><%= number_to_currency(basic_price.price) %></strong>                                            
                                         <% else %>
                                             <strong>
                                                 <span class="small-title has-text-dark">NO PRICING YET</span>

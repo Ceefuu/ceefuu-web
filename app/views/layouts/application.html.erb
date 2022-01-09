@@ -5,7 +5,7 @@
     <title>
       <%= content_for?(:html_title) ? yield(:html_title) : "Ceefuu: Discover, buy, and sell extraordinary content" %>
     </title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -30,3 +30,19 @@
     <%= yield %>
   </body>
 </html>
+<script>
+window.addEventListener('orientationchange', doOnOrientationChange);
+
+function doOnOrientationChange()
+{
+  var bPortrait = document.documentElement.clientWidth < document.documentElement.clientHeight;
+  if(bPortrait)
+  {      
+    document.getElementById("viewport").setAttribute("content","width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1", minimum-scale=1");
+  }
+  else
+  {
+    document.getElementById("viewport").setAttribute("content","width=900px, user-scalable=yes, maximum-scale=2, minimum-scale=0.25");
+  }
+}
+</script>

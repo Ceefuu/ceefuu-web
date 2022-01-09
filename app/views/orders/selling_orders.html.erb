@@ -1,14 +1,14 @@
 <% content_for(:html_title) { 'Manage Selling History' } %>
 <section class="section">
     <div class="container">
-        <p class="title">Manage Selling History</p>
-
+        <p class="title">Selling History</p>
+    <div style="overflow-x:auto;">
         <table class="table is-fullwidth">
             <thead>
                 <tr>
                     <th>Date</th>
                     <th>Buyer Name</th>
-                    <th>Title</th>
+                    <th>Comment</th>
                     <th>Due Date</th>
                     <th>Amount</th>
                     <th>Status</th>
@@ -29,7 +29,7 @@
                             <%= link_to o.title, order_detail_path(o) %>
                         </td>
                         <td><%= o.due_date.strftime('%d %b %Y') %></td>
-                        <td>$<%= o.amount %></td>
+                        <td><%= number_to_currency(o.amount) %></td>
                         <td>
                             <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.completed? %>">
                                 <%= o.status.capitalize %>
@@ -42,6 +42,6 @@
                 <% end %>
             </tbody>
         </table>
-
+</div>
     </div>
 </section>

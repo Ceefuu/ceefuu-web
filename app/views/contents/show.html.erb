@@ -105,7 +105,7 @@
                                                     <strong><%= p.title %></strong>                                                                                                        
                                                 </div>
                                                 <div class="media-right">
-                                                    <p class="title is-4">$<%= p.price %></p>
+                                                    <p class="title is-4"><%= number_to_currency(p.price) %></p>
                                                 </div>                                                
                                             </div>
                                             <div class="content f-15">
@@ -115,7 +115,7 @@
                                                 </p>
                                             </div>
                                             <% if (!user_signed_in? && @content.active) || (user_signed_in? && @content.active && @content.user_id != current_user.id) %>
-                                                <%= link_to "Continue ($#{p.price})", checkout_path(id: @content.id, pricing_type: p.pricing_type), class: "button is-fullwidth is-black" %>
+                                                <%= link_to "Continue (#{number_to_currency(p.price)})", checkout_path(id: @content.id, pricing_type: p.pricing_type), class: "button is-fullwidth is-black" %>
                                             <% else %>
                                                 <button class="button is-fullwidth is-black" disabled>Not Available</button>  
                                             <% end %>

@@ -152,7 +152,7 @@
                                             <% if @user.provider %>
                                                 <span class="has-text-success">Facebook verified</span>
                                             <% else %>
-                                                <span class="has-text-danger">Facebook unverified</span>
+                                                <span class="has-text-black">Facebook unverified</span>
                                             <% end %>
                                         </p>
                                     </div>
@@ -213,7 +213,7 @@
                                 <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %> 
                                 <% if !basic_price.nil? %>
                                             <span class="small-title">STARTING AT</span> 
-                                            <strong>$<%= basic_price.price %></strong>                                            
+                                            <strong><%= number_to_currency(basic_price.price) %></strong>                                            
                                         <% else %>
                                             <strong>
                                                 <span class="small-title has-text-dark">NO PRICING YET</span>
