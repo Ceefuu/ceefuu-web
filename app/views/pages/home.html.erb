@@ -43,6 +43,24 @@
 
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Ceefuu: Discover, buy, and sell extraordinary content">
+        <meta name="description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.ceefuu.com/">
+        <meta property="og:title" content="Ceefuu: Discover, buy, and sell extraordinary content">
+        <meta property="og:description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+        <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.ceefuu.com/">
+        <meta property="twitter:title" content="Ceefuu: Discover, buy, and sell extraordinary content">
+        <meta property="twitter:description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+        <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
 <section class="hero is-medium has-bg-img is-center">
@@ -232,7 +250,7 @@
                         <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Share your Ceefuu profile with your audience and start generating revenue. From podcast links to top 10 tips, sell your premium content with just a few clicks. We manage the technology, so you can focus on doing what you do the best.
                         </p>
                     </div>
-                    <div class="column is-6 is-hidden-mobile is-hidden-tablet">
+                    <div class="column is-6 is-hidden-mobile">
                         <%= image_tag "illustrations/card-1.gif", class: "max-w-4 mx-auto is-block" %>
                     </div>
                 </div>

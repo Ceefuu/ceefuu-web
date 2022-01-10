@@ -54,7 +54,7 @@
                                                     <%= f.text_area :review, class: "textarea" %>
                                                 </div>
                                                 <a class="toggle-modal button is-light" aria-control="<%= o.id %>">Cancel</a>
-                                                <%= f.submit "Add Review", class: "button is-danger" %>
+                                                <%= f.submit "Add Review", class: "button is-black" %>
                                             <% end %>
                                         </div>
                                     </div>
@@ -77,10 +77,11 @@
 
         var order_id = e.target.getAttribute('aria-control');
         $('#star_' + order_id).raty({
-            path: ‘/assets/’
+            path: '/assets/raty-js/lib/images',
+            scoreName: 'review[stars]',
             score: 1
         });
-        $('#star_' + order_id).raty('reload');
+        $('star_' + order_id).raty('reload');
         $('#' + order_id).toggleClass('is-active');
     });
 </script>

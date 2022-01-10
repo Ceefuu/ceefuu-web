@@ -2,10 +2,22 @@
 <html>
   <head>
     <script src="https://js.stripe.com/v3/"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216601392-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-216601392-1');
+    </script>
+
     <title>
       <%= content_for?(:html_title) ? yield(:html_title) : "Ceefuu: Discover, buy, and sell extraordinary content" %>
     </title>
+
     <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -38,7 +50,7 @@ function doOnOrientationChange()
   var bPortrait = document.documentElement.clientWidth < document.documentElement.clientHeight;
   if(bPortrait)
   {      
-    document.getElementById("viewport").setAttribute("content","width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1", minimum-scale=1");
+    document.getElementById("viewport").setAttribute("content","width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1");
   }
   else
   {

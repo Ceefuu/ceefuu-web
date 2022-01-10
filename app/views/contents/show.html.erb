@@ -18,10 +18,22 @@
   height: 100%;
 }
 </style>
+<% content_for(:html_title) {@content.title}%><% content_for(:html_title) { ' : Ceefuu' } %>
 
-<% content_for(:html_title) { @content.title } %>
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ceefuu.com/">
+    <meta property="og:title" content="<%= @content.title %>">
+    <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ceefuu.com/">
+    <meta property="twitter:title" content="<%= @content.title %>">
+    <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
 <%= render 'shared/categories' %>
