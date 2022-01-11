@@ -1,4 +1,4 @@
-<% content_for(:html_title) { 'Manage Purchase History' } %>
+<% content_for(:html_title) { 'Manage Purchase History: Ceefuu' } %>
 <section class="section">
     <div class="container">
         <p class="title">Purchase History</p>
@@ -8,7 +8,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Creator Name</th>
-                    <th>Comment</th>
+                    <th>Order Details</th>
                     <th>Due Date</th>
                     <th>Amount</th>
                     <th>Status</th>
@@ -26,7 +26,7 @@
                         <td><%= o.created_at.strftime('%d %b %Y') %></td>
                         <td><%= o.creator_name %></td>
                         <td>
-                            <%= link_to o.title, order_detail_path(o) %>
+                            <%= link_to 'View', order_detail_path(o) %>
                         </td>
                         <td><%= o.due_date.strftime('%d %b %Y') %></td>
                         <td><%= number_to_currency(o.amount) %></td>

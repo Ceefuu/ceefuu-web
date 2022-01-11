@@ -61,15 +61,15 @@
                     <div class="card-content">
                         <p>
                             <strong><%= @order.title %></strong>
-                            <strong class="title is-4 is-pulled-right has-text-success">$<%= @order.amount %></strong>
+                            <strong class="title is-4 is-pulled-right has-text-success"></strong>
                         </p>
                         <br>
                         <small>
                             <p>Creator: <%= @order.creator_name %></p>
                             <br>
-                            <p>Order: <%= @order.id %></p>
+                            <p>Order ID: <%= @order.id %></p>
                             <br>
-                            <p><%= @order.created_at.strftime('%d, %b %Y') %></p>  
+                            <p>Created at: <%= @order.created_at.strftime('%d, %b %Y') %></p>  
                         </small>                    
                     </div>                   
                 </div>

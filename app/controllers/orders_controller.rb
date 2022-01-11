@@ -20,11 +20,11 @@ class OrdersController < ApplicationController
     end
 
     def selling_orders
-        @orders = current_user.selling_orders
+        @orders = current_user.selling_orders.order("created_at DESC")
     end
 
     def buying_orders
-        @orders = current_user.buying_orders
+        @orders = current_user.buying_orders.order("created_at DESC")
     end
 
     def complete
