@@ -33,6 +33,8 @@ gem 'friendly_id', '~> 5.4.0'
 gem "sentry-ruby"
 gem "sentry-rails"
 
+gem 'omniauth-stripe-connect', '~> 2.10.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

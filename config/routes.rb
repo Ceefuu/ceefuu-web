@@ -61,6 +61,11 @@ Rails.application.routes.draw do
               path_names: {sign_up: 'register', sign_in: 'login', edit: 'profile', sign_out: 'logout'},
               controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations', sessions: 'sessions'}
 
+  devise_scope :user do
+                get '/users/auth/stripe_connect/callback' => 'omniauth_callbacks#stripe_connect'
+                post '/users/auth/stripe_connect/callback' => 'omniauth_callbacks#stripe_connect'
+              end
+
   resources :users, only: [:show] do
     member do
       post '/verify_phone' => 'users#verify_phone'

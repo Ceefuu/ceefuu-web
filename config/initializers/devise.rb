@@ -312,4 +312,8 @@ Devise.setup do |config|
                    scope: 'email', 
                    info_fields: 'email,name',
                    image_size: 'large'
+  config.omniauth :stripe_connect, 
+                  Rails.application.credentials[:stripe][:STRIPE_CONNECT_ID], Rails.application.credentials[:stripe][:STRIPE_SECRET_KEY],
+                   scope: 'read_write',
+                   stripe_landing: 'login'
 end

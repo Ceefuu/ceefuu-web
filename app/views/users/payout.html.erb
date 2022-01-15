@@ -5,15 +5,16 @@
             <div class="column is-8-tablet is-6-desktop is-6-widescreen">
                 <p class="title has-text-centered">Recieve your earnings</p>
                 <br>
-                
-                <%= form_with url: update_payout_path, local: true do |f| %>
-                    <div class="field">
-                        <%= f.text_field :paypal, value: current_user.paypal, placeholder: "Your Paypal Email", class: "input" %>
-                    </div><br>
-                    <div class="field is-grouped is-grouped-centered">
-                        <%= f.submit "Add Paypal Email", class: "button is-black" %>
-                    </div>
-                <% end %>
+            <div class="field is-grouped is-grouped-centered">
+                <% if current_user.merchant_id.blank? %>
+                    <%= link_to "Connect with Stripe", stripe_express_path, class: "button is-black" %>
+                <% else %>
+                <br/>
+                <div class="text-center">
+                    <%= link_to "Express Dashboard", @login_link.url, class: "button is-black" %>
+                </div>
+                <% end %> 
+            </div>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ Trestle.resource(:transactions) do
   end
 
   table do
-    column :creator
+    column :buyer 
     column :amount
     column :status
     column :transaction_type

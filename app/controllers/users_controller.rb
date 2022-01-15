@@ -74,8 +74,9 @@ class UsersController < ApplicationController
   end
 
   def update_payout
-    if current_user.update(paypal: params[:paypal])
-      flash[:notice] = "Update payout successfully"
+    if !current_user.merchant_id.blank?
+      account = Stripe::Account.retrieve(current_user.merchant_id)
+      @login_link = account.login_links.create()
     else
       flash[:alert] = "Something went wrong"
     end
@@ -85,62 +86,62 @@ class UsersController < ApplicationController
   def earnings
     @net_income = (Transaction.where("creator_id = ?", current_user.id).sum(:amount) / 1.1).round(2)
 
-    @withdrawn = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
-                    current_user.id,
-                    Transaction.statuses[:approved],
-                    Transaction.transaction_types[:withdraw]
-                ).sum(:amount)
+    # @withdrawn = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
+    #                 current_user.id,
+    #                 Transaction.statuses[:approved],
+    #                 Transaction.transaction_types[:withdraw]
+    #             ).sum(:amount)
     
-    @pending = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
-                current_user.id,
-                Transaction.statuses[:pending],
-                Transaction.transaction_types[:withdraw]
-                ).sum(:amount)
+    # @pending = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
+    #             current_user.id,
+    #             Transaction.statuses[:pending],
+    #             Transaction.transaction_types[:withdraw]
+    #             ).sum(:amount)
 
-    @purchased = Transaction.where("buyer_id = ? AND source_type = ? AND transaction_type = ?",
-                current_user.id,
-                Transaction.source_types[:system],
-                Transaction.transaction_types[:trans]
-                ).sum(:amount)
+    # @purchased = Transaction.where("buyer_id = ? AND source_type = ? AND transaction_type = ?",
+    #             current_user.id,
+    #             Transaction.source_types[:system],
+    #             Transaction.transaction_types[:trans]
+    #             ).sum(:amount)
 
-    @withdrawable = current_user.wallet
+    # @withdrawable = current_user.wallet
 
     @transactions = Transaction.where("creator_id = ? OR (buyer_id = ? AND source_type = ?)",
                     current_user.id,
                     current_user.id,
                     Transaction.source_types[:system]
-                  ).page(params[:page])
+                  ).page(params[:page]).order("created_at DESC")
   end
 
-  def withdraw
-    amount = params[:amount].to_i
-    is_pending_withdraw = Transaction.exists?(buyer_id: current_user.id, 
-                                              status: Transaction.statuses[:pending],
-                                              transaction_type: Transaction.transaction_types[:withdraw])
+  # def withdraw
+  #   amount = params[:amount].to_i
+  #   is_pending_withdraw = Transaction.exists?(buyer_id: current_user.id, 
+  #                                             status: Transaction.statuses[:pending],
+  #                                             transaction_type: Transaction.transaction_types[:withdraw])
     
-    if amount <= 0
-      flash[:alert] = "Invalid amount"
-    elsif amount > current_user.wallet
-      flash[:alert] = "You're asking for more than you have"
-    elsif !is_pending_withdraw.blank?
-      flash[:alert] = "You currently have a pending withdraw request"
-    else
-      transaction = Transaction.new
-      transaction.status = Transaction.statuses[:pending]
-      transaction.transaction_type = Transaction.transaction_types[:withdraw]
-      transaction.source_type = Transaction.source_types[:system]
-      transaction.buyer = current_user
-      transaction.amount = amount
+  #   if amount <= 0
+  #     flash[:alert] = "Invalid amount"
+  #   elsif amount > current_user.wallet
+  #     flash[:alert] = "You're asking for more than you have"
+  #   elsif !is_pending_withdraw.blank?
+  #     flash[:alert] = "You currently have a pending withdraw request"
+  #   else
+  #     transaction = Transaction.new
+  #     transaction.status = Transaction.statuses[:pending]
+  #     transaction.transaction_type = Transaction.transaction_types[:withdraw]
+  #     transaction.source_type = Transaction.source_types[:system]
+  #     transaction.buyer = current_user
+  #     transaction.amount = amount
 
-      if transaction.save
-        flash[:notice] = "Create withdraw request successfully"
-      else
-        flash[:alert] = "Cannot create a request"
-      end
-    end
+  #     if transaction.save
+  #       flash[:notice] = "Create withdraw request successfully"
+  #     else
+  #       flash[:alert] = "Cannot create a request"
+  #     end
+  #   end
 
-    redirect_to request.referrer
-  end
+  #   redirect_to request.referrer
+  # end
 
   def remove_subscription
     @subscription = Subscription.find_by_user_id(current_user.id)

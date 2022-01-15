@@ -82,26 +82,26 @@ class OrdersController < ApplicationController
         if params[:payment].blank?
             flash[:alert] = "No payment selected"
             return false
-        elsif params[:payment] == "system"
-            if amount > current_user.wallet
-                flash[:alert] = "Not enought money"
-                return false
-            else
-                ActiveRecord::Base.transaction do
-                    current_user.update!(wallet: current_user.wallet - amount)
-                    content.user.update!(wallet: content.user.wallet + pricing.price)
-                    Transaction.create! status: Transaction.statuses[:approved],
-                                        transaction_type: Transaction.transaction_types[:trans],
-                                        source_type: Transaction.source_types[:system],
-                                        buyer: current_user,
-                                        creator: content.user,
-                                        amount: amount,
-                                        content: content
-                    order.save
-                end
-                flash[:notice] = "Your order is created successfully"
-                return true
-            end
+        # elsif params[:payment] == "system"
+        #     if amount > current_user.wallet
+        #         flash[:alert] = "Not enought money"
+        #         return false
+        #     else
+        #         ActiveRecord::Base.transaction do
+        #             current_user.update!(wallet: current_user.wallet - amount)
+        #             content.user.update!(wallet: content.user.wallet + pricing.price)
+        #             Transaction.create! status: Transaction.statuses[:approved],
+        #                                 transaction_type: Transaction.transaction_types[:trans],
+        #                                 source_type: Transaction.source_types[:system],
+        #                                 buyer: current_user,
+        #                                 creator: content.user,
+        #                                 amount: amount,
+        #                                 content: content
+        #             order.save
+        #         end
+        #         flash[:notice] = "Your order is created successfully"
+        #         return true
+        #     end
         else
             # TODO: 
             # 1. find better way to handle Stripe Payment Intent API
@@ -111,11 +111,15 @@ class OrdersController < ApplicationController
                 currency: 'usd',
                 confirm: true,
                 customer: current_user.stripe_id,
+                :destination => {
+                    :amount => pricing.total * 90, # 90% of the total amount goes to the Host
+                    :account => content.user.merchant_id # Host's Stripe customer ID
+                 }
             })
 
             if payment_intent.status == 'succeeded'
                 ActiveRecord::Base.transaction do
-                    content.user.update!(wallet: content.user.wallet + pricing.price)
+                    # content.user.update!(wallet: content.user.wallet + pricing.price)
                     Transaction.create! status: Transaction.statuses[:approved],
                                         transaction_type: Transaction.transaction_types[:trans],
                                         source_type: Transaction.source_types[:stripe],

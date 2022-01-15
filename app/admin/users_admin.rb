@@ -80,7 +80,6 @@ Trestle.resource(:users) do
     text_field :full_name
     text_field :paypal
     text_field :email
-    text_field :phone
     text_area :about
   end
 

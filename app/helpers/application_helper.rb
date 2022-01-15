@@ -19,5 +19,10 @@ module ApplicationHelper
 
     def title(page_title)
         content_for(:title) { page_title }
-      end
+    end
+
+    def stripe_express_path
+        "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=#{Rails.application.credentials.dig(:stripe, :connect_client_id)}&scope=read_write"
+    end
+
 end
