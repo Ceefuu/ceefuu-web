@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # extend FriendlyId
+  # friendly_id :username, use: :slugged
   has_one_attached :avatar
   has_many :contents
 
@@ -19,7 +21,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, :confirmable, omniauth_providers: [:stripe_connect], omniauth_providers: [:facebook]
+         :omniauthable, :confirmable, omniauth_providers: [:stripe_connect,:facebook]
 
   validates :full_name, presence: true, length: {maximum: 50}
   validates :username, uniqueness: true, if: -> { username.present? }

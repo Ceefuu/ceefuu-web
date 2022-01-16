@@ -13,11 +13,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def stripe_connect
-      auth_data = request.env["omniauth.auth"]
+      response = Stripe::OAuth.token({
+        grant_type: 'authorization_code',
+        code: params[:code],
+      })
       @user = current_user
   
       if @user.persisted?
-        @user.merchant_id = auth_data.uid
+        @user.merchant_id = response.stripe_user_id
         @user.save
   
         if !@user.merchant_id.blank?
