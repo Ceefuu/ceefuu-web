@@ -9,8 +9,7 @@ Trestle.resource(:users) do
     column :full_name
     column :email
     column :active
-    column :wallet
-    column :paypal
+    column :merchant_id
     column :stripe_id
     column :created_at, align: :center
     actions do |toolbar, instance, admin|
@@ -78,7 +77,7 @@ Trestle.resource(:users) do
 
   form do |user|
     text_field :full_name
-    text_field :paypal
+    text_field :merchant_id
     text_field :email
     text_area :about
   end

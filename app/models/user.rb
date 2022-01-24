@@ -60,6 +60,11 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def is_active_creator
+    !self.merchant_id.blank?
+  end
+
 end
 #   def generate_pin
 #     self.pin = SecureRandom.hex(2)

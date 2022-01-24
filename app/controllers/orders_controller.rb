@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
             plan = Stripe::Plan.retrieve(subscription.plan_id)
             rate =  plan.metadata.commission.to_f/100
         else
-            rate = 10.0/100
+            rate = 20.0/100
         end
 
         amount = pricing.price * (rate + 1)
@@ -111,10 +111,10 @@ class OrdersController < ApplicationController
                 currency: 'usd',
                 confirm: true,
                 customer: current_user.stripe_id,
-                :destination => {
-                    :amount => pricing.total * 90, # 90% of the total amount goes to the Host
-                    :account => content.user.merchant_id # Host's Stripe customer ID
-                 }
+                application_fee_amount: (amount * 100).to_i * 80,
+                transfer_data: {
+                    destination: '{{content.user.merchant_id}}',
+                  },
             })
 
             if payment_intent.status == 'succeeded'

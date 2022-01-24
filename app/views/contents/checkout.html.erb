@@ -1,4 +1,4 @@
-<%- title "Checkout" %>
+<% content_for(:html_title) { 'Checkout your order: Ceefuu' } %>
 <section class="section">
     <div class="container">
 
@@ -14,7 +14,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="content">
-                                        <p class="title is-5">Payment options</p>
+                                        <p class="title is-5">Payment method</p>
                                     </div>
                                     <hr>
                                     <div class="content">
@@ -26,10 +26,6 @@
                                                 </span>
                                             </div>
                                         <% end %>
-                                        <div class="control m-t-20">
-                                            <%= radio_button_tag 'payment', 'system' %>
-                                            <span class="m-l-10">Your System Wallet ($<strong class="has-text-success"><%= current_user.wallet %></strong>)</span>
-                                        </div>
                                     </div>
                                 </div>
                                 

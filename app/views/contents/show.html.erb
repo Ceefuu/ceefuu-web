@@ -152,7 +152,7 @@
                             </div>
                             <div class="card-content f-15">
                                 <div class="content has-text-centered">
-                                <%= link_to users_path do %>
+                                <%= link_to users_path(@content.user)  do %>
                                   <p class="title is-5"><%= @content.user.full_name %></p> 
                                 <% end %> 
                             </div><br/>

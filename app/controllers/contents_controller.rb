@@ -12,6 +12,11 @@ class ContentsController < ApplicationController
   end
 
   def create
+
+    if !current_user.is_active_creator
+      return redirect_to settings_payout_path, alert: "Please Connect to Stripe Express first."
+    end
+
     @content = current_user.contents.build(content_params)
 
     if @content.save
@@ -42,6 +47,10 @@ class ContentsController < ApplicationController
 
     if @step == 3 && content_params[:description].blank?
       return redirect_to request.referrer, flash: {error: "Description cannot be blank"}
+    end
+
+    if @step == 3 && content_params[:pitch].blank?
+      return redirect_to request.referrer, flash: {error: "Pitch Video cannot be blank"}
     end
 
     if @step == 4 && @content.photos.blank?
@@ -101,7 +110,7 @@ class ContentsController < ApplicationController
       plan = Stripe::Plan.retrieve(subscription.plan_id)
       @rate =  plan.metadata.commission.to_f/100
     else
-      @rate = 10.0/100
+      @rate = 20.0/100
     end
 
     if current_user.stripe_id
