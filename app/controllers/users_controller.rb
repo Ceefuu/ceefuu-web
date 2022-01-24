@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @reviews = Review.where(creator_id: params[:id]).order("created_at desc")
   end
 
@@ -160,6 +160,15 @@ class UsersController < ApplicationController
                         {object: 'card'},
                       )
       @card_detail = payment_cards.data.first
+    end
+  end
+
+  def payout
+    if !current_user.merchant_id.blank?
+      account = Stripe::Account.retrieve(current_user.merchant_id)
+      @login_link = account.login_links.create()
+    else
+      flash[:alert] = "Something went wrong"
     end
   end
 

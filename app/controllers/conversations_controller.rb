@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.friendly.find(params[:id])
 
         @conversation = Conversation.where("(sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)",
                                                 current_user.id, params[:id], 
