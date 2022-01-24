@@ -1,18 +1,70 @@
+<style>
+@media only screen and (max-width: 800px) {
+	
+	/* Force table to not be like tables anymore */
+	table, 
+	thead, 
+	tbody, 
+	th, 
+	td, 
+	tr { 
+		display: block; 
+	}
+ 
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+ 
+	tr { border: 1px solid #ccc; }
+ 
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+		white-space: normal;
+		text-align:left;
+	}
+ 
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+	}
+ 
+	/*
+	Label the data
+	*/
+	td:before { content: attr(data-title); }
+}
+</style>
+
 <% content_for(:html_title) { 'Manage Selling History: Ceefuu' } %>
 <section class="section">
     <div class="container">
         <p class="title">Selling History</p>
-    <div style="overflow-x:auto;">
-        <table class="table is-fullwidth">
+    <div>
+        <table class="table is-striped is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Buyer Name</th>
-                    <th>Order Details</th>
-                    <th>Due Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th class="numeric">Date</th>
+                    <th class="numeric">Buyer Name</th>
+                    <th class="numeric">Order Details</th>
+                    <th class="numeric">Due Date</th>
+                    <th class="numeric">Amount</th>
+                    <th class="numeric">Status</th>
+                    <th class="numeric">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,21 +75,21 @@
                 <% end %>
                 <% @orders.each do |o| %>
                     <tr>
-                        <td><%= o.created_at.strftime('%d %b %Y') %></td>
-                        <td><%= o.buyer_name %></td>
-                        <td>
-                            <%= link_to 'View', order_detail_path(o) %>
+                        <td data-title="Date" class="has-text-right-mobile"><%= o.created_at.strftime('%d %b %Y') %></td>
+                        <td data-title="Buyer Name" class="has-text-right-mobile"><%= o.buyer_name %></td>
+                        <td data-title="Order Details" class="has-text-right-mobile">
+                            <%= link_to 'View Details', order_detail_path(o) %>
                         </td>
-                        <td><%= o.due_date.strftime('%d %b %Y') %></td>
-                        <td><%= number_to_currency(o.amount) %></td>
-                        <td>
+                        <td data-title="Due Date" class="has-text-right-mobile"><%= o.due_date.strftime('%d %b %Y') %></td>
+                        <td data-title="Amount" class="has-text-right-mobile"><%= number_to_currency(o.amount) %></td>
+                        <td data-title="Status" class="has-text-right-mobile">
                             <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.completed? %>">
                                 <%= o.status.capitalize %>
                             </span>
                         </td>
-                        <td>
-                            <%= link_to 'Mark Complete', complete_order_path(o), method: :put, class: "button is-small is-primary #{'is-hidden' if o.completed?}" %> 
-                        </td>     
+                        <td class="has-text-right-mobile">
+                            <%= link_to 'Mark Complete', complete_order_path(o), method: :put, class: "button is-small is-black #{'is-hidden' if o.completed?}" %> 
+                        </td> 
                     </tr>
                 <% end %>
             </tbody>

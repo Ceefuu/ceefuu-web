@@ -2,7 +2,7 @@
     <div class="field">
         <div class="content">
         <ul>
-            <li>Come up with an effective one minute pitch.</li>
+            <li>Come up with an effective pitch to hook the attention of your audience.</li>
             <li>Provide a clear value proposition of what people get when they buy your digital content.</li>
             <li>Position the camera in landscape mode while recording.</li>
             <li>Avoid any background noise while pitching.</li>
@@ -16,13 +16,13 @@
     </div>
 
     <div class="field">
-        <label for="" class="label">Build your Content Gallery</label>
+        <label for="" class="label">Photo Gallery</label>
         <div class="control">
             <div class="m-b-20">
                 <div class="dropzone" id="myDropzone" action="/contents/<%= @content.id %>/upload_photo"></div>
             </div>
 
-            <div class="columns is-multiline" style: width: 100%%>
+            <div class="columns is-multiline" style: width: 100% %>
                 <% @content.photos.each do |photo| %>
                     <div class="column is-one-fifth">
                         <div class="card is-image">
@@ -49,7 +49,7 @@
 <script>
     Dropzone.options.myDropzone = {
         paramName: "file",
-        maxFilesize: 2,
+        maxFilesize: 500,
         acceptedFiles: "image/*",
         init: function() {
             this.on('complete', function (file) {
