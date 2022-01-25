@@ -37,7 +37,7 @@
         <div class="columns is-centered">
             <div class="column is-8-tablet is-6-desktop is-6-widescreen">
                 <p class="title has-text-centered">Payment Method</p>
-                <% if current_user.stripe_id %>
+                <% if @card_detail.present? %>
                   <div class="card">
                       <div class="card-header-title is-centered">
                         <%= @card_detail.brand %> <%= "Card: **** **** **** " + @card_detail.last4 %>
@@ -67,7 +67,7 @@
 <script>
 
     // Create a Stripe client.
-    var stripe = Stripe('<%= Rails.application.credentials[:stripe][:publishable_key] %>');
+    var stripe = Stripe('<%= Rails.application.credentials[:stripe][:public_key] %>');
 
 
     // Create an instance of Elements.
