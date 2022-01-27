@@ -253,6 +253,11 @@
                                             Edit
                                         </small>
                                     <% end %>
+                                    <%= link_to content_path(content), method: :delete do %>
+                                        <small class="has-text-black">
+                                          |  Delete
+                                        </small>
+                                    <% end %>
                                 </span>
 
                             <a class="has-text-black is-block card-footer-item has-text-centered">

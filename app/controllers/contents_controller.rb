@@ -126,6 +126,15 @@ class ContentsController < ApplicationController
     end
   end
 
+  def destroy
+    if @content.destroy
+      flash[:notice] = 'Content Deleted'
+    else
+      flash[:notice] = 'Failed to delete content'
+    end
+    redirect_to request.referrer
+  end
+
   private
 
   def set_step
