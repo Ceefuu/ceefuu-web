@@ -78,7 +78,7 @@ class UsersController < ApplicationController
       account = Stripe::Account.retrieve(current_user.merchant_id)
       @login_link = account.login_links.create()
     else
-      flash[:alert] = "Add a Stripe account to recieve payments"
+      flash[:alert] = "Add a Stripe account to recieve payments."
     end
     redirect_to request.referrer
   end
