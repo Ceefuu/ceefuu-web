@@ -2,7 +2,7 @@ Trestle.resource(:transactions) do
   remove_action :destroy
 
   menu do
-    item :transactions, icon: "fa fa-money", label: "Withdraw"
+    item :transactions, icon: "fa fa-money", label: "Orders"
   end
 
   collection do

@@ -41,26 +41,6 @@ Trestle.resource(:users) do
 
       @net_income = (Transaction.where("creator_id = ?", @user.id).sum(:amount) / 1.1).round(2)
 
-      @withdrawn = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
-                      @user.id,
-                      Transaction.statuses[:approved],
-                      Transaction.transaction_types[:withdraw]
-                  ).sum(:amount)
-      
-      @pending = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
-                  @user.id,
-                  Transaction.statuses[:pending],
-                  Transaction.transaction_types[:withdraw]
-                  ).sum(:amount)
-
-      @purchased = Transaction.where("buyer_id = ? AND source_type = ? AND transaction_type = ?",
-                  @user.id,
-                  Transaction.source_types[:system],
-                  Transaction.transaction_types[:trans]
-                  ).sum(:amount)
-
-      @withdrawable = @user.wallet
-
       @transactions = Transaction.where("creator_id = ? OR (buyer_id = ? AND source_type = ?)",
                       @user.id,
                       @user.id,

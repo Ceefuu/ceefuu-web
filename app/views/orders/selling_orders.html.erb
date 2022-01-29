@@ -54,15 +54,16 @@
 <section class="section">
     <div class="container">
         <p class="title">Selling History</p>
+        <p class="is-size-7">*Total amount is inclusive of the service fee. The final payment will be the actual pricing of the content<p><br>
     <div>
-        <table class="table is-striped is-hoverable is-fullwidth">
+        <table class="table is-striped is-hoverable is-fullwidth is-bordered">
             <thead>
                 <tr>
                     <th class="numeric">Date</th>
                     <th class="numeric">Buyer Name</th>
                     <th class="numeric">Order Details</th>
                     <th class="numeric">Due Date</th>
-                    <th class="numeric">Amount</th>
+                    <th class="numeric">Amount*</th>
                     <th class="numeric">Status</th>
                     <th class="numeric">Action</th>
                 </tr>
@@ -83,7 +84,7 @@
                         <td data-title="Due Date" class="has-text-right-mobile"><%= o.due_date.strftime('%d %b %Y') %></td>
                         <td data-title="Amount" class="has-text-right-mobile"><%= number_to_currency(o.amount) %></td>
                         <td data-title="Status" class="has-text-right-mobile">
-                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.completed? %>">
+                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-black' if o.completed? %>">
                                 <%= o.status.capitalize %>
                             </span>
                         </td>

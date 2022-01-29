@@ -106,15 +106,17 @@ class OrdersController < ApplicationController
             # TODO: 
             # 1. find better way to handle Stripe Payment Intent API
             # 2. Move Stripe Payment Intent API logic to service
+
+
             payment_intent = Stripe::PaymentIntent.create({
                 amount: (amount * 100).to_i,
                 currency: 'usd',
                 confirm: true,
                 customer: current_user.stripe_id,
-                application_fee_amount: (amount * 100).to_i * 80,
-                transfer_data: {
-                    destination: '{{content.user.merchant_id}}',
-                  },
+                :transfer_data => {
+                    :amount => (pricing.price * 100).to_i,
+                    :destination => content.user.merchant_id # Host's Stripe customer ID
+                  }
             })
 
             if payment_intent.status == 'succeeded'

@@ -55,7 +55,7 @@
     <div class="container">
         <p class="title">Purchase History</p>
     <div style="overflow-x:auto;">
-        <table class="table is-striped is-hoverable is-fullwidth">
+        <table class="table is-striped is-hoverable is-fullwidth is-bordered">
             <thead>
                 <tr>
                     <th class="numeric">Date</th>
@@ -83,15 +83,15 @@
                         <td data-title="Due Date" class="has-text-right-mobile"><%= o.due_date.strftime('%d %b %Y') %></td>
                         <td data-title="Amount" class="has-text-right-mobile"><%= number_to_currency(o.amount) %></td>
                         <td data-title="Status" class="has-text-right-mobile">
-                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-success' if o.completed? %>">
+                            <span class="tag <%= 'is-warning' if o.inprogress? %> <%= 'is-black' if o.completed? %>">
                                 <%= o.status.capitalize %>
                             </span>
                         </td>
                         <td class="has-text-right-mobile">
                             <% if !o.completed? %>
-                                <%= link_to 'Mark Complete', complete_order_path(o), method: :put, class: "button is-small is-primary #{'is-hidden' if o.completed?}" %>  
+                                <%= link_to 'Mark Complete', complete_order_path(o), method: :put, class: "button is-small is-black #{'is-hidden' if o.completed?}" %>  
                             <% else %>
-                                <a class="button is-small is-outlined is-danger toggle-modal" aria-control="<%= o.id %>">Rating</a>
+                                <a class="button is-small is-outlined is-success toggle-modal" aria-control="<%= o.id %>">Rating</a>
 
                                 <div class="modal" id="<%= o.id %>">
                                     <div class="modal-background"></div>

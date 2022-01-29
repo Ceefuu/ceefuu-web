@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   end
 
   def earnings
-    @net_income = (Transaction.where("creator_id = ?", current_user.id).sum(:amount) / 1.1).round(2)
+    @net_income = (Transaction.where("creator_id = ?", current_user.id).sum(:amount)).round(2)
 
     # @withdrawn = Transaction.where("buyer_id = ? AND status = ? AND transaction_type = ?",
     #                 current_user.id,

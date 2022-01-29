@@ -3,7 +3,7 @@ Trestle.resource(:contents) do
   remove_action :destroy
 
   menu do
-    item :contents, icon: "fa fa-address-card"
+    item :contents, icon: "fa fa-creative-commons"
   end
 
   table do

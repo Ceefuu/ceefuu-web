@@ -40,6 +40,23 @@
 
 </style>
 <% content_for(:html_title)  {@user.full_name}   %>
+
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ceefuu.com/">
+    <meta property="og:title" content="<%= @user.full_name %>">
+    <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ceefuu.com/">
+    <meta property="twitter:title" content="<%= @user.about%>">
+    <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
+<% end %>
+
 <section class="section">
     <div class="container">
         <div class="columns">
@@ -235,7 +252,7 @@
                     </div>
                     <div class="card-content">
 
-                        <!-- Sample Reviews -->
+                        <!-- Reviews -->
                         <% @reviews.each do |r| %>
                             <article class="media">
                                 <figure class="media-left">
@@ -267,51 +284,5 @@
         </div>
     </div>
 </section>
-
-<div class="modal" id="contact-form">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Send a Message</p>
-            <button class="delete toggle-contact" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-            <div class="columns">
-                <div class="column is-one-third">
-                    <div class="card" st>
-                        <div class="card-content is-horizontal-center is-flex">
-                            <figure class="image is-128x128">
-                                <%= image_tag avatar_url(@user), class: "is-rounded" %>
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <hr>
-                            <strong>Please include:</strong>
-                            <ul class="is-size-7" style="list-style:initial">
-                                <li>Project description</li>
-                                <li>Specific instructions</li>
-                                <li>Relevant files</li>
-                                <li>Your budget</li>
-                            </ul>
-                        </div>
-                     </div>
-                </div>   
-                <div class="column">
-                    <%= form_with model: Message.new do |f| %>
-                        <%= f.hidden_field :receiver_id, value: @user.id %>
-                        <div class="card-content">
-                            <div class="field">
-                                <div class="control">
-                                    <%= f.text_area :content, class: "textarea" %>
-                                </div>
-                            </div>
-                            <%= f.submit "Send", class: "button is-danger is-pulled-right" %>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
 <%= render  "shared/footer" %>
 
