@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     member do
       delete :delete_photo
       post :upload_photo
+      post :update_content_status
     end
     resources :orders, only: [:create]
   end

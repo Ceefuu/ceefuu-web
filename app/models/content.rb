@@ -5,10 +5,10 @@ class Content < ApplicationRecord
   belongs_to :user
   belongs_to :category
   
-  has_many :pricings, dependent: :destroy
-  has_many :orders, dependent: :destroy
-  has_many :reviews, dependent: :destroy
-  has_many :transactions, dependent: :destroy
+  has_many :pricings
+  has_many :orders
+  has_many :reviews
+  has_many :transactions
   has_many_attached :photos
   has_rich_text :description
 

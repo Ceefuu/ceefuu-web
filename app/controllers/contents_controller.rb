@@ -126,11 +126,11 @@ class ContentsController < ApplicationController
     end
   end
 
-  def destroy
-    if @content.destroy
-      flash[:notice] = 'Content Deleted'
+  def update_content_status
+    if @content.update(is_active: !@content.is_active)
+      flash[:notice] = 'Content Deactivated'
     else
-      flash[:notice] = 'Failed to delete content'
+      flash[:notice] = 'Failed to deactive content'
     end
     redirect_to request.referrer
   end

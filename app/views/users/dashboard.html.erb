@@ -253,9 +253,9 @@
                                             Edit&nbsp;
                                         </small>
                                     <% end %>
-                                    <%= link_to content_path(content), method: :delete do %>
+                                    <%= link_to update_content_status_content_path(content), method: :post do %>
                                         <small class="has-text-black">
-                                          |  Delete
+                                          |  <%= content.is_active ? 'Active' : 'Deactive' %>
                                         </small>
                                     <% end %>
                                 </span>
