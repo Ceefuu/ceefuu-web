@@ -399,6 +399,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   redis (~> 4.0)
+  rexml
   sass-rails (>= 6)
   selenium-webdriver
   sentry-rails
