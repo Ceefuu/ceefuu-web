@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       query_condition.push @delivery
     end
 
-    @contents = Content
+    @contents = Content.active_contents
                 .select("contents.id, contents.title, contents.user_id, MIN(pricings.price) AS price, pitch, slug")
                 .joins(:pricings)
                 .where(query_condition)

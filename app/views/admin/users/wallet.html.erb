@@ -37,7 +37,7 @@
                             <td class="text-right">
                                 <span class="<%= @user.id == t.buyer_id ? 'text-danger' : 'text-success' %>">
                                     <%= @user.id == t.buyer_id ? '-' : '+' %>
-                                    $<%= @user.id == t.buyer_id ? t.amount : (t.amount / 1.1).round(2) %>
+                                    $<%= @user.id == t.buyer_id ? t.amount : (t.amount).round(2) %>
                                 </span>
                             </td>
                         </tr>

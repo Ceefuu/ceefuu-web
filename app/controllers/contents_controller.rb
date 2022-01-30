@@ -128,7 +128,7 @@ class ContentsController < ApplicationController
 
   def update_content_status
     if @content.update(is_active: !@content.is_active)
-      flash[:notice] = 'Content Deactivated'
+      flash[:notice] = 'Saved'
     else
       flash[:notice] = 'Failed to deactive content'
     end

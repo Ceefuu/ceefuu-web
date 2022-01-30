@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.friendly.find(params[:id])
-    @reviews = Review.where(creator_id: params[:id]).order("created_at desc")
+    @reviews = Review.where(creator_id: @user.id).order("created_at desc")
   end
 
   def update

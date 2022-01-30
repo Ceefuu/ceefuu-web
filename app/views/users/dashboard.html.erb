@@ -18,7 +18,7 @@
   -webkit-line-clamp: 1;
 }
 </style>
-<% content_for(:html_title) { 'Dashboard: Ceefuu' } %>
+<% content_for(:html_title) { 'Dashboard - Ceefuu' } %>
 <section class="section">
     <div class="container">
         <div class="columns">
@@ -255,7 +255,7 @@
                                     <% end %>
                                     <%= link_to update_content_status_content_path(content), method: :post do %>
                                         <small class="has-text-black">
-                                          |  <%= content.is_active ? 'Active' : 'Deactive' %>
+                                          |  <%= content.is_active ? 'Activate' : 'Deactivate' %>
                                         </small>
                                     <% end %>
                                 </span>

@@ -14,6 +14,8 @@ class Content < ApplicationRecord
 
   accepts_nested_attributes_for :pricings
 
+  scope :active_contents, -> { where(is_active: false) }
+
   validates :title, presence: { message: 'cannot be blank' }
 
   def average_rating
