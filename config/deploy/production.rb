@@ -50,8 +50,8 @@
 # The server-based syntax can be used to override options:
 # ------------------------------------
 server "34.233.135.48",
-  user: "deploy",
-  roles: %w{web app},
+  user: "ubuntu",
+  roles: %w{web db app},
   ssh_options: {
     keys: %w(/Users/Sidharth/Desktop/docs/devops/deploy.pem),
     forward_agent: false,
