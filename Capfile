@@ -34,7 +34,6 @@ require 'capistrano/rails'
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "capistrano/passenger"
-require "dotenv/rails"
 
 set :rbenv_type, :user
 set :rbenv_ruby, '3.0.3'  
