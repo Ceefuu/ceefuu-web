@@ -18,6 +18,38 @@
   -webkit-line-clamp: 1;
 }
 
+.rounded-img-container {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.rounded-img-profile {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.rounded-img-review{
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.rounded-img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Flexible iFrame */
 
 .flexible-container {
@@ -71,9 +103,9 @@
 
                             <!-- Avatar -->
                             <div class="card-content is-horizontal-center is-flex">
-                                <figure class="image is-128x128">
-                                    <%= image_tag avatar_url(@user), class: "is-rounded" %>
-                                </figure>
+                                <div class="rounded-img-container">
+                                    <%= image_tag avatar_url(@user), class: "rounded-img" %>
+                                </div>
                             </div>
                             
                             <div class="card-content">
@@ -220,9 +252,9 @@
                             <footer class="card-footer">
                                 <span class="card-footer-item">
                                     <%= link_to users_path(content.user) do %>
-                                        <figure class="image is-32x32">
-                                            <%= image_tag avatar_url(content.user), class: "is-rounded" %>
-                                        </figure>
+                                        <div class="rounded-img-profile">
+                                            <%= image_tag avatar_url(content.user), class: "rounded-img" %>
+                                        </div>
                                     <% end %>
                                 </span>
 
@@ -256,9 +288,9 @@
                         <% @reviews.each do |r| %>
                             <article class="media">
                                 <figure class="media-left">
-                                    <p class="image is-64x64">
-                                        <%= image_tag avatar_url(r.buyer), class: "is-rounded" %>
-                                    </p>
+                                    <div class="rounded-img-review">
+                                        <%= image_tag avatar_url(r.buyer), class: "rounded-img" %>
+                                    </div>
                                 </figure>
 
                                 <div class="media-content">

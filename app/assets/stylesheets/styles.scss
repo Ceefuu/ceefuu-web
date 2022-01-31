@@ -78,25 +78,33 @@ $sides: (top, bottom, left, right);
 .avatar {
   position: relative;
   display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: inherit;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    border: 1px solid white;
-  }
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
 
-  &.online:before {
-    background-color: #1dbf73;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: -2px;
+  //   right: -2px;
+  //   width: 10px;
+  //   height: 10px;
+  //   border-radius: 100%;
+  //   border: 1px solid white;
+  // }
 
-  &.offline:before {
-    background-color: gray;
-  }
+  // &.online:before {
+  //   background-color: #1dbf73;
+  // }
+
+  // &.offline:before {
+  //   background-color: gray;
+  // }
 }
 
 .conversation-message {

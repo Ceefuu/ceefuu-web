@@ -14,6 +14,22 @@
   text-overflow: ellipsis;
 }
 
+.rounded-img-page{
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.rounded-img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  
+  object-fit: cover;
+  object-position: center;
+}
+
 .is-ellipsis-2 {
   -webkit-line-clamp: 1;
 }
@@ -70,9 +86,9 @@
             <footer class="card-footer">
                 <span class="card-footer-item">
                     <%= link_to users_path(content.user) do %>
-                        <figure class="image is-32x32">
-                            <%= image_tag avatar_url(content.user), class: "is-rounded" %>
-                        </figure>
+                        <div class="rounded-img-page">
+                            <%= image_tag avatar_url(content.user), class: "rounded-img" %>
+                        </div>
                     <% end %>
                 </span>
 
