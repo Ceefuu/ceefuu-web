@@ -13,6 +13,6 @@ test:
 
 production:
   <<: *default
-  database: ceefuu_production
+  database: ceefuu
   username: deploy
   password: Rails.application.credentials.dig(:production, :db_password)
