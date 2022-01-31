@@ -1,8 +1,26 @@
+<style>
+.rounded-img-container {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.rounded-img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  
+  object-fit: cover;
+  object-position: center;
+}
+</style>
 <article class="media">
+
     <figure class="media-left">
-        <p class="image is-64x64">
-            <%= image_tag avatar_url(comment.user), class: "is-rounded" %>
-        </p>
+        <div class="rounded-img-container">
+            <%= image_tag avatar_url(comment.user), class: "rounded-img" %>
+        </div>
     </figure>
     <div class="media-content">
         <div class="content">

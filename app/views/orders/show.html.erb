@@ -1,3 +1,20 @@
+<style>
+.rounded-img-container {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.rounded-img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  
+  object-fit: cover;
+  object-position: center;
+}
+</style>
 <% content_for(:html_title) { 'Orders - Ceefuu' } %>
 <section class="section" data-channel-subscribe="order" data-order-id="<%= @order.id %>">
     <div class="container">
@@ -18,9 +35,9 @@
 
                 <article class="media">
                     <figure class="media-left">
-                        <p class="image is-64x64">                            
-                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
-                        </p>
+                        <div class="rounded-img-container">                           
+                            <%= image_tag avatar_url(current_user), class: "rounded-img" %>
+                        </div>
                     </figure>
                     <div class="media-content">
                         <%= form_with model: Comment.new, id: "new-comment" do |f| %>
