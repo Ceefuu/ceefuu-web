@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 
 HOSTNAME = ENV['HOSTNAME']
+config.assets.enabled = true
 
 module Ceefuu
   class Application < Rails::Application

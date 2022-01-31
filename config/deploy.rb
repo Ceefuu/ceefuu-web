@@ -39,47 +39,24 @@ set :keep_releases, 5
 # set :ssh_options, verify_host_key: :secure
 
 
-# set the locations that we will look for changed assets to determine whether to precompile
-set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
-
-# clear the previous precompile task
-Rake::Task["deploy:assets:precompile"].clear_actions
-class PrecompileRequired < StandardError; end
-
-namespace :deploy do
-  namespace :assets do
-    desc "Precompile assets"
-    task :precompile do
-      on roles(fetch(:assets_roles)) do
-        within release_path do
-          with rails_env: fetch(:rails_env) do
-            begin
-              # find the most recent release
-              latest_release = capture(:ls, '-xr', releases_path).split[1]
-
-              # precompile if this is the first deploy
-              raise PrecompileRequired unless latest_release
-
-              latest_release_path = releases_path.join(latest_release)
-
-              # precompile if the previous deploy failed to finish precompiling
-              execute(:ls, latest_release_path.join('assets_manifest_backup')) rescue raise(PrecompileRequired)
-
-              fetch(:assets_dependencies).each do |dep|
-                # execute raises if there is a diff
-                execute(:diff, '-Naur', release_path.join(dep), latest_release_path.join(dep)) rescue raise(PrecompileRequired)
-              end
-
-              info("Skipping asset precompile, no asset diff found")
-
-              # copy over all of the assets from the last release
-              execute(:cp, '-r', latest_release_path.join('public', fetch(:assets_prefix)), release_path.join('public', fetch(:assets_prefix)))
-            rescue PrecompileRequired
-              execute(:rake, "assets:precompile") 
-            end
-          end
-        end
+namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      # Check if assets have changed. If not, don't run the precompile task - it takes a long time.
+      force_compile = false
+      changed_asset_count = 0
+      begin
+        from = source.next_revision(current_revision)
+        asset_locations = 'app/assets/ lib/assets vendor/assets'
+        changed_asset_count = capture("cd #{latest_release} && #{source.local.log(from)} #{asset_locations} | wc -l").to_i
+      rescue Exception => e
+        logger.info "Error: #{e}, forcing precompile"
+        force_compile = true
+      end
+      if changed_asset_count > 0 || force_compile
+        logger.info "#{changed_asset_count} assets have changed. Pre-compiling"
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "#{changed_asset_count} assets have changed. Skipping asset pre-compilation"
       end
     end
   end
-end
