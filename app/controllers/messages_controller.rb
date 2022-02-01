@@ -1,4 +1,4 @@
-class MessageController < ApplicationController
+class MessagesController < ApplicationController
   def create
     if current_user.id == message_params[:receiver_id]
       redirect_to request.referrer, alert: "You cannot send message to yourself"
