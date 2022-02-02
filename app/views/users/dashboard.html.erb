@@ -269,9 +269,11 @@
                                             Edit&nbsp;
                                         </small>
                                     <% end %>
+                                </span>
+                                <span class="card-footer-item">
                                     <%= link_to update_content_status_content_path(content), method: :post do %>
                                         <small class="has-text-black">
-                                          |  <%= content.is_active ? 'Activate' : 'Deactivate' %>
+                                         <%= content.is_active ? 'Activate' : 'Deactivate' %>
                                         </small>
                                     <% end %>
                                 </span>

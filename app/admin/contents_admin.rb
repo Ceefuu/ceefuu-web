@@ -42,6 +42,7 @@ Trestle.resource(:contents) do
 
   form do |content|
     text_field :title
+    text_field :pitch
     editor :description
     select :category_id, Category.where(active: true)
   end
