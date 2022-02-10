@@ -113,6 +113,7 @@
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
                                     <p class="title is-5"><%= @user.full_name %></p>
+                                    <strong>@<%= @user.username %></strong>
                                     <div id="follow_form">
                                       <% if current_user.id != @user.id %>
                                         <% if current_user.following.include?(@user) %>
