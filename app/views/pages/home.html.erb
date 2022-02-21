@@ -45,30 +45,30 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Ceefuu: Discover, buy, and sell extraordinary content">
-        <meta name="description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+        <meta name="title" content="Ceefuu - Start a paid vlog">
+        <meta name="description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.ceefuu.com/">
-        <meta property="og:title" content="Ceefuu: Discover, buy, and sell extraordinary content">
-        <meta property="og:description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+        <meta property="og:title" content="Ceefuu - Start a paid vlog">
+        <meta property="og:description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
         <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.ceefuu.com/">
-        <meta property="twitter:title" content="Ceefuu: Discover, buy, and sell extraordinary content">
-        <meta property="twitter:description" content="With Ceefuu creators can sell extraordinary digital content starting from exclusive podcasts to top 10 lists. Join a global community of creators.">
+        <meta property="twitter:title" content="Ceefuu - Start a paid vlog">
+        <meta property="twitter:description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
         <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
-<section class="hero is-medium has-bg-img is-center">
+<section class="hero is-medium is-light is-center">
     <div class="hero-body">
         <div class="container"><br><br>
         
             <h1 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">
-                Extraordinary content from top creators
+                Start a paid vlog
             </h1>
            
             <h2 class="subtitle has-text-black is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">
@@ -78,7 +78,7 @@
 
         <% if (!user_signed_in?) %>
         <div class="container has-text-centered">
-            <%= link_to  "Start Creating", new_content_path, class: "button is-black", data: { turbolinks: false } %>
+            <%= link_to  "Start vlogging", new_content_path, class: "button is-black", data: { turbolinks: false } %>
         </div>
         
         <% else %>
@@ -92,40 +92,24 @@
 </section>
 
 
-<section class="section section-feature-grey is-small m-t-50">
-        <div class="container">
-    
-            <div class="columns is-vcentered app-side">
-                <div class="column is-8 is-offset-2">
-                    <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile main-title">Keep 100% of your income</h2>
-                    <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">We believe that great content is valuable and what you create matters. Our platform will enable creators to make a living by selling extraordinary digital content directly to their audience.</p><br>
-                    <div class="container has-text-centered">
-                        <%= link_to  "Start Creating", new_content_path, class: "button is-black", data: { turbolinks: false } %>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
-
-
  <!--Features-->
     <div class="section">
         <div class="container">
     
             <div class="has-text-centered py-6">
                 <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">Create what you love</h2>
-                <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A new medium for selling digital content</p>
+                <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A medium for sharing extraordinary vlogs. </p>
             </div>
     
             <div class="py-6 small:mb-10">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6">
-                        <%= image_tag "illustrations/card-3.gif", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-1.jpg", class: "max-w-4 mx-auto is-block" %>
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Create a compelling pitch</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Come up with an effective pitch - a value proposition of what people get when they buy your digital content. Give your audience a teaser of what you are selling. Be unique, and keep experimenting to see what works.
+                        <h3 class="title is-4 is-narrow has-text-black">Create a compelling trailer</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Come up with an effective pitch - a value proposition of what your audience can feel, get, or achieve when they watch your vlog. Give your audience a teaser of what you are creating. Be unique, and keep experimenting to see what works.
                         </p>
                     </div>
                 </div>
@@ -134,15 +118,15 @@
             <div class="py-6 small:mb-10">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6 is-hidden-desktop">
-                        <%= image_tag "illustrations/card-1.gif", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-2.jpg", class: "max-w-4 mx-auto is-block" %>
                     </div>
                     <div class="column is-5 is-offset-1">
                         <h3 class="title is-4 is-narrow has-text-black">Share with your audience</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Share your Ceefuu profile with your audience and start generating revenue. From podcast links to top 10 tips, sell your premium content with just a few clicks. We manage the technology, so you can focus on doing what you do the best.
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Share your Ceefuu profile with your audience and start generating revenue. From mental health tips to pranking your friends, sell your premium content with just a few clicks. We manage the technology, so you can focus on doing what you do the best.
                         </p>
                     </div>
                     <div class="column is-6 is-hidden-mobile">
-                        <%= image_tag "illustrations/card-1.gif", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-2.jpg", class: "max-w-4 mx-auto is-block" %>
                     </div>
                 </div>
             </div>
@@ -150,12 +134,12 @@
             <div class="py-6">
                 <div class="columns is-vcentered b-centered-tablet-p">
                     <div class="column is-6">
-                        <%= image_tag "illustrations/card-2.gif", class: "max-w-4 mx-auto is-block" %>
+                        <%= image_tag "illustrations/card-3.jpg", class: "max-w-4 mx-auto is-block" %>
                     </div>
     
                     <div class="column is-5">
                         <h3 class="title is-4 is-narrow has-text-black">Everything in one place</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu takes the hassle out of running a digital content business. Our platform provides creators with tools to track earnings, manage all orders, and build a meaningful relationship with the audience.</p>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu takes the hassle out of running your vlog business. Our platform provides creators with tools to track earnings, manage all orders, and build a meaningful relationship with the audience. Start a paid vlog today.</p>
                     </div>
                 </div>
             </div>

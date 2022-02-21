@@ -1,14 +1,14 @@
 <style>
     :root {
       --brandColor: hsl(166, 67%, 51%);
-      --background: rgb(247, 247, 247);
+      --background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
       --textDark: hsla(0, 0%, 0%, 0.66);
       --textLight: hsla(0, 0%, 0%, 0.33);
     }
 
     body {
       background: var(--background);
-      height: 100vh;
+      height: 105vh;
       color: var(--textDark);
     }
 
@@ -17,7 +17,7 @@
     }
 
     .register {
-      margin-top: 3rem;
+      margin-top: 2rem;
       background: white;
       border-radius: 10px;
     }
@@ -78,13 +78,8 @@
   <% content_for(:html_title) { 'Join Ceefuu - Sign up to continue' } %>
     <section class="container">
       <div class="columns is-multiline">
-        <div class="column is-8 is-offset-2 register">
+        <div class="column is-4 is-offset-4 register">
           <div class="columns">
-            <div class="column left">
-              <h1 class="title is-1">Ceefuu</h1>
-              <h2 class="subtitle colored is-4">A new medium for selling digital content.</h2>
-              <p class="has-text-black">We believe that great content is valuable and what you create matters. Our platform will enable creators to make a living by selling extraordinary content directly to their audience.</p>
-            </div>
             <div class="column right">
               <h1 class="title is-4">Join Ceefuu</h1>
 
