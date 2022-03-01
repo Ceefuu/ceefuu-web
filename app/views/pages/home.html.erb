@@ -1,5 +1,4 @@
 <style>
-
 .section-feature-grey{
 
     background-color:#fbfbfb;
@@ -45,21 +44,21 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Ceefuu - Start a paid vlog">
-        <meta name="description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
+        <meta name="title" content="Ceefuu - Share your knowledge 1:1 and earn money">
+        <meta name="description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.ceefuu.com/">
-        <meta property="og:title" content="Ceefuu - Start a paid vlog">
-        <meta property="og:description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
+        <meta property="og:title" content="Ceefuu - Share your knowledge 1:1 and earn money">
+        <meta property="og:description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
         <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.ceefuu.com/">
-        <meta property="twitter:title" content="Ceefuu - Start a paid vlog">
-        <meta property="twitter:description" content="Ceefuu makes it easy for vloggers to earn money by selling premium content directly to their audience.">
+        <meta property="twitter:title" content="Ceefuu - Share your knowledge 1:1 and earn money">
+        <meta property="twitter:description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
         <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
@@ -67,20 +66,20 @@
     <div class="hero-body">
         <div class="container"><br><br>
         
-            <h1 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">
-                Start a paid vlog
+            <h1 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
+                Provide 1:1 guidance to students and professionals
             </h1>
            
             <h2 class="subtitle has-text-black is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">
-                Unlock the true potential of your content.
+                Share your knowledge and change lives.
             </h2><br>
         
 
         <% if (!user_signed_in?) %>
         <div class="container has-text-centered">
-            <%= link_to  "Start vlogging", new_content_path, class: "button is-black", data: { turbolinks: false } %>
+            <%= link_to  "Become an instructor", new_user_registration_path, class: "button is-black", data: { turbolinks: false } %>
         </div>
-        
+          
         <% else %>
         <div class="container has-text-centered">
             <%= link_to 'Dashboard', dashboard_path, class: "button is-black is-medium m-t-10" %>
@@ -97,8 +96,8 @@
         <div class="container">
     
             <div class="has-text-centered py-6">
-                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-3-mobile is-spaced main-title">Create what you love</h2>
-                <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A medium for sharing extraordinary vlogs. </p>
+                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">How Ceefuu works</h2>
+                <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A medium for sharing your knowledge. </p>
             </div>
     
             <div class="py-6 small:mb-10">
@@ -108,8 +107,8 @@
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Create a compelling trailer</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Come up with an effective pitch - a value proposition of what your audience can feel, get, or achieve when they watch your vlog. Give your audience a teaser of what you are creating. Be unique, and keep experimenting to see what works.
+                        <h3 class="title is-4 is-narrow has-text-black">Create your first gig</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu instructors are everyday creators, entrepreneurs, and professionals who are passionate about sharing their knowledge. Film your pitch and create your first gig in just five clicks.
                         </p>
                     </div>
                 </div>
@@ -122,7 +121,7 @@
                     </div>
                     <div class="column is-5 is-offset-1">
                         <h3 class="title is-4 is-narrow has-text-black">Share with your audience</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Share your Ceefuu profile with your audience and start generating revenue. From mental health tips to pranking your friends, sell your premium content with just a few clicks. We manage the technology, so you can focus on doing what you do the best.
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Once your gig is published, start sharing it with your audience across social media channels. Spend some time in creating a good looking profile. Provide a clear value proposition on how your skills and experiences are valuable. .
                         </p>
                     </div>
                     <div class="column is-6 is-hidden-mobile">
@@ -138,8 +137,8 @@
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Everything in one place</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu takes the hassle out of running your vlog business. Our platform provides creators with tools to track earnings, manage all orders, and build a meaningful relationship with the audience. Start a paid vlog today.</p>
+                        <h3 class="title is-4 is-narrow has-text-black">Start earning weekly</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">The potential for earning a meaningful income by sharing your skills and expertise is huge. Our instructors keep 100% of their revenue. Payouts are processed every week into your Stripe account.</p>
                     </div>
                 </div>
             </div>

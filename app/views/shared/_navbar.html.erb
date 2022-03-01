@@ -8,7 +8,7 @@ div.scrollmenu {
 
 div.scrollmenu a {
   display: inline-block;
-  color: grey;
+  color: black;
   text-align: center;
   padding: 16px;
   text-decoration: none;
@@ -57,7 +57,7 @@ div.scrollmenu a:hover {
                             <span class="icon is-small is-left">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <%= text_field_tag 'q', '', class: "input", placeholder: "Search" %>
+                            <%= text_field_tag 'q', '', class: "input", placeholder: "Search for topics, courses, and lessons" %>
                         </div>
                     </div>
                 <% end %>
@@ -72,8 +72,8 @@ div.scrollmenu a:hover {
             <% if (!user_signed_in?) %>
                 <div class="navbar-item">
                     <div class="buttons">
-                        <%= link_to  "Login", new_user_session_path, class: "button is-light", data: { turbolinks: false } %>
-                        <%= link_to  "Sart vlogging", new_user_registration_path, class: "button is-black" %>
+                        <%= link_to  "Log in", new_user_session_path, class: "button is-light", data: { turbolinks: false } %>
+                        <%= link_to  "Sign up", new_user_registration_path, class: "button is-black" %>
                     </div>
                 </div>
             <% else %>
@@ -102,8 +102,8 @@ div.scrollmenu a:hover {
     <nav class="navbar has-shadow" style="z-index: 5">
         <div class="container">
             <div class="scrollmenu">
-                <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
-                <%= link_to 'Create New Content', new_content_path, class: "navbar-item" %>
+                <%= link_to 'Home', dashboard_path, class: "navbar-item" %>
+                <%= link_to 'Create New Gig', new_content_path, class: "navbar-item" %>
                 <%= link_to 'Selling History', selling_orders_path, class: "navbar-item" %>
                 <%= link_to 'Purchase History', buying_orders_path, class: "navbar-item" %>
                 <%= link_to 'Earnings', earnings_path, class: "navbar-item" %>

@@ -100,7 +100,7 @@
                             <div class="card-content">
                                 <article class="media">
                                     <div class="media-content">
-                                        <p><strong>About This Content</strong></p>
+                                        <p><strong>About this gig</strong></p>
                                         <hr>
                                         <%= @content.description %>
                                     </div>
@@ -147,7 +147,7 @@
                                             <div class="content f-15">
                                                 <p class="m-t-30"><%= p.description %></p>
                                                 <p class="m-t-30">
-                                                    <strong><i class="far fa-clock"></i> <%= pluralize(p.delivery_time, 'Day') %> Delivery</strong>                                                    
+                                                    <strong><i class="far fa-clock"></i> <%= pluralize(p.delivery_time, 'Day') %> Session</strong>                                                    
                                                 </p>
                                             </div>
                                             <% if (!user_signed_in? && @content.active) || (user_signed_in? && @content.active && @content.user_id != current_user.id) %>
