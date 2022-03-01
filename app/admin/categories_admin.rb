@@ -40,5 +40,6 @@ Trestle.resource(:categories) do
 
   form do |category|
     text_field :name
+    text_field :id
   end
 end
