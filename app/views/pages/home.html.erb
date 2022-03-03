@@ -44,47 +44,154 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Ceefuu - Share your knowledge 1:1 and earn money">
-        <meta name="description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
+        <meta name="title" content="Ceefuu - Personalised guidance from your favorite creators">
+        <meta name="description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.ceefuu.com/">
-        <meta property="og:title" content="Ceefuu - Share your knowledge 1:1 and earn money">
-        <meta property="og:description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
+        <meta property="og:title" content="Ceefuu - Personalised guidance from your favorite creators">
+        <meta property="og:description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
         <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.ceefuu.com/">
-        <meta property="twitter:title" content="Ceefuu - Share your knowledge 1:1 and earn money">
-        <meta property="twitter:description" content="Ceefuu enables top instructors and industry experts to earn money by providing 1:1 guidance to students and professionals.">
+        <meta property="twitter:title" content="Ceefuu - Personalised guidance from your favorite creators">
+        <meta property="twitter:description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
         <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
-<section class="hero is-medium is-light is-center">
+<section class="hero is-medium has-bg-img">
     <div class="hero-body">
-        <div class="container"><br><br>
+        <div class="container"><br>
         
-            <h1 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
-                Provide 1:1 guidance to students and professionals
+            <h1 class="title has-text-white has-text-left has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
+                Provide personalised guidance<br>to students and professionals
             </h1>
            
-            <h2 class="subtitle has-text-black is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">
-                Share your knowledge and change lives.
+            <h2 class="subtitle has-text-white is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-left">
+                Share your knowledge and start earning.
             </h2><br>
         
 
         <% if (!user_signed_in?) %>
-        <div class="container has-text-centered">
-            <%= link_to  "Become an instructor", new_user_registration_path, class: "button is-black", data: { turbolinks: false } %>
+        <div class="container has-text-left">
+            <%= link_to  "Become an instructor", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
         </div>
           
         <% else %>
-        <div class="container has-text-centered">
-            <%= link_to 'Dashboard', dashboard_path, class: "button is-black is-medium m-t-10" %>
+        <div class="container has-text-left">
+            <%= link_to 'Dashboard', dashboard_path, class: "button is-white is-medium m-t-10" %>
         <% end %>
         </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="m-t-50">
+    <div class="container">
+        <h1 class="title has-text-left is-3 is-size-4-mobile p-l-10">Popular Topics</h1>
+        <div id="carousel-category" class="hero-carousel">
+            
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 12) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_1.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">Teach or Collaborate</span><br>
+                                <span class="title is-4 has-text-white">Web Development</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 8) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_2.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">NFT, Stocks & Tips</span><br>
+                                <span class="title is-4 has-text-white">Finance & Crypto</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 11) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_3.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">AI, NLP, & Data Analysis</span><br>
+                                <span class="title is-4 has-text-white">Data Science</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 2) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_4.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">YouTube, Instagram, & TikTok</span><br>
+                                <span class="title is-4 has-text-white">Photography & Video</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 1) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_5.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">Personalised music lessons</span><br>
+                                <span class="title is-4 has-text-white">Music</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 4) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_6.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">SEO & Performance Marketing</span><br>
+                                <span class="title is-4 has-text-white">Digital Marketing</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="p-10">
+                    <%= link_to search_path(category: 3) do %>
+                        <div class="card-image">
+                            <%= image_tag "home/category_7.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-white">Mental & Physical Health</span><br>
+                                <span class="title is-4 has-text-white">Health & Fitness</span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -96,7 +203,7 @@
         <div class="container">
     
             <div class="has-text-centered py-6">
-                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">How Ceefuu works</h2>
+                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-3 is-size-4-mobile is-spaced main-title">How Ceefuu works</h2>
                 <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A medium for sharing your knowledge. </p>
             </div>
     
