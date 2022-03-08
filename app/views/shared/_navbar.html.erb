@@ -57,7 +57,7 @@ div.scrollmenu a:hover {
                             <span class="icon is-small is-left">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <%= text_field_tag 'q', '', class: "input", placeholder: "Search for topics, courses, and lessons" %>
+                            <%= text_field_tag 'q', '', class: "input", placeholder: "Try mentorship or coaching" %>
                         </div>
                     </div>
                 <% end %>
@@ -103,7 +103,7 @@ div.scrollmenu a:hover {
         <div class="container">
             <div class="scrollmenu">
                 <%= link_to 'Home', dashboard_path, class: "navbar-item" %>
-                <%= link_to 'Create New Gig', new_content_path, class: "navbar-item" %>
+                <%= link_to 'Create New Service', new_content_path, class: "navbar-item" %>
                 <%= link_to 'Selling History', selling_orders_path, class: "navbar-item" %>
                 <%= link_to 'Purchase History', buying_orders_path, class: "navbar-item" %>
                 <%= link_to 'Earnings', earnings_path, class: "navbar-item" %>

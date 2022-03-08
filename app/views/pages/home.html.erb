@@ -49,21 +49,21 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Ceefuu - Personalised guidance from your favorite creators">
-        <meta name="description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
+        <meta name="title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
+        <meta name="description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.ceefuu.com/">
-        <meta property="og:title" content="Ceefuu - Personalised guidance from your favorite creators">
-        <meta property="og:description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
+        <meta property="og:title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
+        <meta property="og:description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
         <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.ceefuu.com/">
-        <meta property="twitter:title" content="Ceefuu - Personalised guidance from your favorite creators">
-        <meta property="twitter:description" content="Ceefuu enables top instructors and industry experts to earn money by providing personalised guidance to students and professionals.">
+        <meta property="twitter:title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
+        <meta property="twitter:description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
         <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
@@ -72,17 +72,17 @@
         <div class="container"><br>
         
             <h1 class="title has-text-white has-text-left has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
-                Provide personalised guidance<br>to students and professionals
+                Build & Scale a Virtual Consulting Business
             </h1>
            
             <h2 class="subtitle has-text-white is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-left">
-                Share your knowledge and start earning.
+                Earn money by sharing your knowledge.
             </h2><br>
         
 
         <% if (!user_signed_in?) %>
         <div class="container has-text-left">
-            <%= link_to  "Become an instructor", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
+            <%= link_to  "Become a consultant", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
         </div>
           
         <% else %>
@@ -97,7 +97,7 @@
 
 <section class="m-t-50">
     <div class="container">
-        <h1 class="title has-text-left is-3 is-size-4-mobile p-l-10">Popular Topics</h1>
+        <h1 class="title has-text-left is-3 is-size-4-mobile p-l-10">Popular Services</h1>
         <div id="carousel-category" class="hero-carousel">
             
             <div class="carousel-item">
@@ -106,7 +106,7 @@
                         <div class="card-image">
                             <%= image_tag "home/category_1.jpg", class: "is-background", width: "100%", height: "100%" %>
                             <div class="card-content is-overlay is-clipped">
-                                <span class="subtitle f-15 has-text-white">Teach or Collaborate</span><br>
+                                <span class="subtitle f-15 has-text-white">Consult or Collaborate</span><br>
                                 <span class="title is-4 has-text-white">Web Development</span>
                             </div>
                         </div>
@@ -219,8 +219,8 @@
                     </div>
     
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Create your first gig</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu instructors are everyday creators, entrepreneurs, and professionals who are passionate about sharing their knowledge. Film your pitch and create your first gig in just five clicks.
+                        <h3 class="title is-4 is-narrow has-text-black">Create your first service</h3>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu consultants are everyday creators, freelancers and online educators who are passionate about sharing their knowledge. Provide short-term mentorship or personalised advice on a course you created. The possibilties are unlimited.
                         </p>
                     </div>
                 </div>
@@ -233,7 +233,7 @@
                     </div>
                     <div class="column is-5 is-offset-1">
                         <h3 class="title is-4 is-narrow has-text-black">Share with your audience</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Once your gig is published, start sharing it with your audience across social media channels. Spend some time in creating a good looking profile. Provide a clear value proposition on how your skills and experiences are valuable. .
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Once your service is published, start sharing it with your audience across social media channels. Spend some time in creating a good looking profile. Provide a clear value proposition on how your skills and experiences are valuable.
                         </p>
                     </div>
                     <div class="column is-6 is-hidden-mobile">
@@ -250,7 +250,7 @@
     
                     <div class="column is-5">
                         <h3 class="title is-4 is-narrow has-text-black">Start earning weekly</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">The potential for earning a meaningful income by sharing your skills and expertise is huge. Our instructors keep 100% of their revenue. Payouts are processed every week into your Stripe account.</p>
+                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">The potential for earning a meaningful income by sharing your skills and expertise is huge. Our consultants keep 100% of their revenue. Payouts are processed every week into the Stripe account.</p>
                     </div>
                 </div>
             </div>
