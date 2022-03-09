@@ -72,7 +72,7 @@
         <div class="container"><br>
         
             <h1 class="title has-text-white has-text-left has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
-                Build & Scale a Virtual Consulting Business
+                Build & Scale a Virtual<br>Consulting Business
             </h1>
            
             <h2 class="subtitle has-text-white is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-left">
@@ -82,7 +82,7 @@
 
         <% if (!user_signed_in?) %>
         <div class="container has-text-left">
-            <%= link_to  "Become a consultant", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
+            <%= link_to  "Start consulting", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
         </div>
           
         <% else %>
