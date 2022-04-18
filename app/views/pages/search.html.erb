@@ -2,10 +2,15 @@
 .input{
     width: 500px
 }
+.container{
+    font-family: "Nexa Bold", sans-serif;
+}
+.select{
+    font-family: "Nexa Bold", sans-serif;
+}
 </style>
 
 <% content_for(:html_title) { 'Ceefuu Discovery - Search for your favourite instructors & creators' } %>
-<%= render 'shared/categories' %>
 
 <section class="section">
     <div class="container">
@@ -16,7 +21,7 @@
 
                 <!-- Category -->
                 <div class="card-header-title">
-                    Browse all services <% if @category %> > <%= @category.name %> <% end %>
+                    Browse all <% if @category %> > <%= @category.name %> <% end %>
                 </div>
 
                 <!-- Sort by Dropdown -->
@@ -40,54 +45,6 @@
         
         <div class="columns">
 
-            <!-- LEFT SIDE -->
-            <div class="column is-one-quarter">
-                <div class="columns is-multiline">
-
-                    <div class="column is-full">
-                        <div class="card">
-                            <div class="card-content">
-
-                                <%= form_tag '', method: :get do %>
-                                    <%= hidden_field_tag 'category', @category ? @category.id : '' %>
-                                    <%= hidden_field_tag 'sort', @sort %>
-                                                                    
-                                    <!-- Title Search -->
-                                    <div class="field">
-                                        <%= text_field_tag 'q', @q || '', class: "input", placeholder: "Search by title" %>
-                                    </div>
-                                    <hr/>
-
-                                  
-
-                                    <!-- Delivery Time -->
-                                    <label class="label">Session Time</label>                                    
-                                    <%= radio_button_tag 'delivery', "1", checked = "1" == @delivery %> Within 24 hours<br>
-                                    <%= radio_button_tag 'delivery', "3", checked = "3" == @delivery %> Up to 3 days <br>
-                                    <%= radio_button_tag 'delivery', "7", checked = "7" == @delivery %> Up to 7 days <br>
-                                    <%= radio_button_tag 'delivery', "10", checked = "10" == @delivery %> Up to 10 days <br>
-                                    <%= radio_button_tag 'delivery', "15", checked = "15" == @delivery %> Up to 15 days <br>
-                                    <%= radio_button_tag 'delivery', "0", checked = "0" == @delivery %> Any
-                                    <hr/>
-
-                                    <!-- Buttons -->
-                                    <div class="field m-t-20">
-                                        <button  class="button is-black  is-fullwidth" type="submit"> Apply</button>
-                                    </div>
-
-                                <% end %>
-
-                                <div class="field m-t-10">
-                                    <%= form_tag '', method: :get do %>
-                                        <button  class="button is-black is-outlined is-fullwidth" type="submit"> Clear All Filters</button>
-                                    <% end %>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- RIGHT SIDE -->
             <div class="column infinite-list">

@@ -22,6 +22,14 @@
     max-width: 27.5rem;
 }
 
+.hero-body {
+  font-family: "Nexa Bold", sans-serif;
+}
+
+.container{
+    font-family: "Nexa Bold", sans-serif;
+}
+
 .columns.is-vcentered{-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 
 .title.is-narrow{margin-bottom:0;}
@@ -49,21 +57,21 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
-        <meta name="description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
+        <meta name="title" content="Ceefuu - Build & Scale a Virtual Mentoring Business">
+        <meta name="description" content="Ceefuu is a virtual mentoring business builder for creators and online educators. Share your knowledge and earn money on your schedule. Join Ceefuu.">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://www.ceefuu.com/">
-        <meta property="og:title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
-        <meta property="og:description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
+        <meta property="og:title" content="Ceefuu - Build & Scale a Virtual Mentoring Business">
+        <meta property="og:description" content="Ceefuu is a virtual mentoring business builder for creators and online educators. Share your knowledge and earn money on your schedule. Join Ceefuu.">
         <meta property="og:image" content="<%= image_url("ceefuu-og.png") %>">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://www.ceefuu.com/">
-        <meta property="twitter:title" content="Ceefuu - Build & Scale a Virtual Consulting Business">
-        <meta property="twitter:description" content="Ceefuu is a virtual consulting business builder for creators and online educators. Share your knowledge and earn money on your schedule.">
+        <meta property="twitter:title" content="Ceefuu - Build & Scale a Virtual Mentoring Business">
+        <meta property="twitter:description" content="Ceefuu is a virtual mentoring business builder for creators and online educators. Share your knowledge and earn money on your schedule. Join Ceefuu.">
         <meta property="twitter:image" content="<%= image_url("ceefuu-og.png") %>">
 <% end %>
 
@@ -72,7 +80,7 @@
         <div class="container"><br>
         
             <h1 class="title has-text-white has-text-left has-text-weight-bold is-2 is-size-4-mobile is-spaced main-title">
-                Build & Scale a Virtual<br>Consulting Business
+                Build & Scale a Virtual<br>Mentoring Business
             </h1>
            
             <h2 class="subtitle has-text-white is-4 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-left">
@@ -82,7 +90,7 @@
 
         <% if (!user_signed_in?) %>
         <div class="container has-text-left">
-            <%= link_to  "Start consulting", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
+            <%= link_to  "Start mentoring", new_user_registration_path, class: "button is-white", data: { turbolinks: false } %>
         </div>
           
         <% else %>
@@ -94,10 +102,10 @@
         </div>
     </div>
 </section>
-
+<div class="section">
 <section class="m-t-50">
     <div class="container">
-        <h1 class="title has-text-left is-3 is-size-4-mobile p-l-10">Popular Services</h1>
+        <h1 class="title has-text-black has-text-left is-3 is-size-4-mobile p-l-10">Popular Services</h1>
         <div id="carousel-category" class="hero-carousel">
             
             <div class="carousel-item">
@@ -201,60 +209,256 @@
         </div>
     </div>
 </section>
+</div>
 
-
- <!--Features-->
-    <div class="section">
+     <!--Mockup Section-->
+    <div class="section is-app-grey">
         <div class="container">
-    
-            <div class="has-text-centered py-6">
-                <h2 class="title has-text-black has-text-centered has-text-weight-bold is-3 is-size-4-mobile is-spaced main-title">How Ceefuu works</h2>
-                <p class="subtitle has-text-black is-5 is-size-6-mobile mb-4 mx-auto max-w-5 has-text-centered">A medium for sharing your knowledge. </p>
-            </div>
-    
-            <div class="py-6 small:mb-10">
-                <div class="columns is-vcentered b-centered-tablet-p">
-                    <div class="column is-6">
-                        <%= image_tag "illustrations/card-1.jpg", class: "max-w-4 mx-auto is-block" %>
+            <!-- Title -->
+            <div class="section-title-wrapper has-text-centered pt-40 pb-40">
+                <h2 class="section-title-landing has-text-black is-2 is-size-4-mobile">Turn your knowledge into serious income</h2><br>
+                <h4 class="has-text-grey is-size-6-mobile">A new medium to share your expertise with the world.</h4>
+            </div><br>
+
+            <!--Mockup-->
+            <div class="mockup-wrap">
+                <div class="image-wrap">
+                    <%= image_tag "home/home-feature.png", class: "full-image-minimal" %>
+
+                    <div class="columns is-multiline app-features is-pulled">
+                        <div class="column is-12">
+                            <!-- Side icon box -->
+                            <div class="content content-flex">
+                                
+                                <div class="dark-text has-text-left ml-30">
+                                    <h5 class="text-bold">Earnings, simplified</h5>
+                                    <p>
+                                        Ceefuu's platform is designed to empower creators and professionals to earn money by engaging in short 20-minute live calls, video messages, and discussions. You set the price for your expertise.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-12">
+                            <!-- Side icon box -->
+                            <div class="content content-flex">
+                                
+                                <div class="dark-text has-text-left ml-30">
+                                    <h5 class="text-bold">Engage with your mentee</h5>
+                                    <p>
+                                        Our platform enables you to stay engaged with a community of people interested in what you have to say. No more reaching out through Email, Twitter, or Instagram - meet your audience live!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-12">
+                            <!-- Side icon box -->
+                            <div class="content content-flex">
+                                
+                                <div class="dark-text has-text-left ml-30">
+                                    <h5 class="text-bold">Make an impact</h5>
+                                    <p>
+                                        Be more memorable by sending out video messages to your mentee. Make a remarkable impact on their life by addressing their questions, objections or frustrations in a personal, visual way.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-12">
+                            <!-- Side icon box -->
+                            <div class="content content-flex">
+                                
+                                <div class="dark-text has-text-left ml-30">
+                                    <h5 class="text-bold">A community that cares about you</h5>
+                                    <p>
+                                       In addition to getting paid for what you know, we also give you all the tools you need to make sure you're always on top of things — from revenue tracking to live chat, we automate the entire process.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-    
-                    <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Create your first service</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Ceefuu consultants are everyday creators, freelancers and online educators who are passionate about sharing their knowledge. Provide short-term mentorship or personalised advice on a course you created. The possibilties are unlimited.
-                        </p>
+
+                    <div class="section-cta has-text-centered pb-40">
+                        <%= link_to 'Become a consultant', new_content_path, class: "button button-cta primary-btn is-rounded" %>
+                        <p>No credit card required.</p>
                     </div>
                 </div>
             </div>
-    
-            <div class="py-6 small:mb-10">
-                <div class="columns is-vcentered b-centered-tablet-p">
-                    <div class="column is-6 is-hidden-desktop">
-                        <%= image_tag "illustrations/card-2.jpg", class: "max-w-4 mx-auto is-block" %>
-                    </div>
+        </div>
+    </div>
+    <!--FAQ-->
+ <div class="section">
+        <div class="container">
+            <!-- Title -->
+            <div class="section-title-wrapper has-text-centered pt-40 pb-40">
+                <h2 class="section-title-landing has-text-black is-2 is-size-4-mobile">Frequently asked questions</h2><br>
+                <h4 class="has-text-grey is-size-6-mobile">Everything you need to know to get started.</h4>
+            </div>
+
+            <div class="faq-wrapper">
+                <div class="columns">
                     <div class="column is-5 is-offset-1">
-                        <h3 class="title is-4 is-narrow has-text-black">Share with your audience</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">Once your service is published, start sharing it with your audience across social media channels. Spend some time in creating a good looking profile. Provide a clear value proposition on how your skills and experiences are valuable.
-                        </p>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How does Ceefuu work?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    Ceefuu is a platform that enables creators and professionals to earn money 
+                                    by sharing knowledge and be a part of the global knowledge sharing economy.
+                                    Getting started is free and easy! Just sign up with your email and add your service.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How does payment work?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    When you sell on Ceefuu, you keep 100% of all your earnings. 
+                                    Your customers pay you directly through an accredited payment processor, Stripe.com, 
+                                    which automatically issues payments to your bank account the day after each service is delivered.
+                                    Ceefuu collects 20% service charge from your audience to help cover the cost of customer service, marketing support,  
+                                    and website development.
+
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>What is mentoring on Ceefuu really like?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    Mentoring on Ceefuu is easy. You list your expertise, set your rates 
+                                    and availability, and your audience books a session with you. 
+                                    You can either consult via text, short video messages, or 20-minute 
+                                    live video calls. We’ll notify you of all the orders in an easy-to-read list. 
+                                    Once you’ve finished mentoring, you’ll mark the session as finished. 
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How many days I can consult?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    It's completely up to you! When someone
+                                    buys a 20-minute live session, share your Calendly link with them. No pressure, feel free to go at your own pace!
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How do I get paid?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    We partner with an online payment processing system, which automatically issues payments soon after each day that you consult! 
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="column is-6 is-hidden-mobile">
-                        <%= image_tag "illustrations/card-2.jpg", class: "max-w-4 mx-auto is-block" %>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="py-6">
-                <div class="columns is-vcentered b-centered-tablet-p">
-                    <div class="column is-6">
-                        <%= image_tag "illustrations/card-3.jpg", class: "max-w-4 mx-auto is-block" %>
-                    </div>
-    
                     <div class="column is-5">
-                        <h3 class="title is-4 is-narrow has-text-black">Start earning weekly</h3>
-                        <p class="py-2 max-w-4 text-medium has-text-center-tablet has-text-black b-centered-tablet-p">The potential for earning a meaningful income by sharing your skills and expertise is huge. Our consultants keep 100% of their revenue. Payouts are processed every week into the Stripe account.</p>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>I forgot my password, what do I do?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                   You can reset your password by simply clicking "Forgot password?" on the login page. 
+                                   You will then be sent an email with further instructions.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How do I view my selling history?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    You can view all of your sales by heading to your selling history page on your account. 
+                                    On your selling history page you can click the “View Details” button next to any of your orders to see a summary of the consultation. 
+                                    You can view the total amount, date of the order and due date in the selling history page .
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>I would like to cancel my upcoming appointment.</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    Our team is happy to help resolve any issues you are experiencing. The best way to reach us is by sending an email at support@ceefuu.com. Please provide the order number and the customer details for us to process a refund.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How can I add my service?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    Once you log in to your account, go to the dashboard by clicking your name on the top right corner.
+                                    Fill out all your account details i.e. profile picture, location and bio. When you click on create new service,
+                                    you have the option to choose your category, consultation preference and add a title.
+                                    Proceed to the next screen to add service details, photos, and description.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Faq Block-->
+                        <div class="faq-block">
+                            <div class="block-header">
+                                <div class="header-icon">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <h3>How can I get support?</h3>
+                            </div>
+                            <div class="block-body">
+                                <p>
+                                    The best way to reach us is by sending an email to support@ceefuu.com.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    
         </div>
     </div>
 
@@ -267,4 +471,12 @@
         infinite: true,
         pagination: false
     });
+</script>
+<script>
+$(document).ready(function initFaq() {
+  $(".faq-block .block-header").on("click", function () {
+    $(this).toggleClass("is-active");
+    $(this).closest(".faq-block").find(".block-body").slideToggle("fast");
+  });
+});
 </script>

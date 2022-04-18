@@ -40,7 +40,24 @@
   border-radius: 50%;
   overflow: hidden;
 }
-
+.title{
+    font-family: "Nexa Bold", sans-serif;
+}
+.tabs{
+    font-family: "Nexa Bold", sans-serif;
+}
+.media-content{
+    font-family: "Nexa Regular", sans-serif;
+}
+.m-t-30{
+    font-family: "Nexa Regular", sans-serif;
+}
+.button{
+    font-family: "Nexa Bold", sans-serif;
+}
+.media-right{
+    font-family: "Nexa Bold", sans-serif;
+}
 </style>
 <% content_for(:html_title) {@content.title}%><% content_for(:html_title) { ' - Ceefuu' } %>
 
@@ -79,14 +96,14 @@
                                 </div>
                                 <hr>
                                 <div class="carousel" id="carousel-photo">
-                                    <% if @content.pitch.present? %>
-                                        <div class="video-container">
-                                            <iframe src="https://www.youtube.com/embed/<%= @content.pitch %>" allowfullscreen></iframe>
-                                        </div>
-                                    <% end %>
                                     <% @content.photos.each do |photo| %>
                                         <div class="carousel-item has-background image is-5by3">
                                             <%= image_tag url_for(photo), class: "is-background", width: "100%" %>
+                                        </div>
+                                    <% end %>
+                                    <% if @content.pitch.present? %>
+                                        <div class="video-container">
+                                            <iframe src="https://www.youtube.com/embed/<%= @content.pitch %>" allowfullscreen></iframe>
                                         </div>
                                     <% end %>
                                 </div>
@@ -100,8 +117,6 @@
                             <div class="card-content">
                                 <article class="media">
                                     <div class="media-content">
-                                        <p><strong>About this service</strong></p>
-                                        <hr>
                                         <%= @content.description %>
                                     </div>
                                 </article>
@@ -133,7 +148,7 @@
                         <div class="tabs-content">
 
                             <% @content.pricings.each do |p| %>
-                                <div class="tab-content" id="tab-<%= p.pricing_type %>" style="<%= 'display: none' if !p.basic? %>">
+                                <div class="tab-content" id="tab-<%= p.pricing_type %>" style="<%= 'display: none' if !p.message? %>">
                                     <div class="card">
                                         <div class="card-content">
                                             <div class="media">
@@ -147,7 +162,7 @@
                                             <div class="content f-15">
                                                 <p class="m-t-30"><%= p.description %></p>
                                                 <p class="m-t-30">
-                                                    <strong><i class="far fa-clock"></i> <%= pluralize(p.delivery_time, 'Day') %> Session</strong>                                                    
+                                                    <strong><i class="far fa-clock"></i> <%= pluralize(p.delivery_time, 'Day') %> -  Response Time</strong>                                                    
                                                 </p>
                                             </div>
                                             <% if (!user_signed_in? && @content.active) || (user_signed_in? && @content.active && @content.user_id != current_user.id) %>

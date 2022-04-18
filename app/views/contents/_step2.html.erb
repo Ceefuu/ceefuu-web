@@ -1,13 +1,13 @@
 <div class="step-content <%= 'is-active' if @step == 2 %>">
     <div class="field">
-        <div class="control">
+        <div class="control"><br>
             <div class="columns has-text-centered">
 
                 <%= f.fields_for :pricings, @content.pricings.order(:pricing_type) do |p| %>
-                    <div class="column <%= 'is-4 is-offset-4' if @content.has_single_price && p.object.basic? %>
-                                      <%= 'is-hidden' if @content.has_single_price && !p.object.basic? %> ">
+                    <div class="column <%= 'is-4 is-offset-4' if @content.has_single_price && p.object.message? %>
+                                      <%= 'is-hidden' if @content.has_single_price && !p.object.message? %> ">
                         <label for="" class="label"><%= p.object.pricing_type.capitalize %></label>
-                        <%= p.hidden_field :pricing_type %>
+                        <%= p.hidden_field :pricing_type %><br>
 
                         <div class="control">
                             <%= p.text_field :title, placeholder: "Title", class: "input is-radiusless" %>
@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="control has-icons-right">
-                            <%= p.number_field :delivery_time, placeholder: "Session Time", class: "input is-radiusless", default: 1 %>
+                            <%= p.number_field :delivery_time, placeholder: "Response Time", class: "input is-radiusless", default: 1 %>
                             <span class="icon is-small is-right">days</span>
                         </div>
 
@@ -34,3 +34,4 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">

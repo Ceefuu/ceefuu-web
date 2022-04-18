@@ -48,6 +48,15 @@
 	*/
 	td:before { content: attr(data-title); }
 }
+
+.title {
+  font-family: "Nexa Bold", sans-serif;
+}
+
+.table{
+    font-family: "Nexa Regular", sans-serif;
+}
+
 </style>
 
 <% content_for(:html_title) { 'Manage Purchase History - Ceefuu' } %>
@@ -78,7 +87,7 @@
                         <td data-title="Date" class="has-text-right-mobile"><%= o.created_at.strftime('%d %b %Y') %></td>
                         <td data-title="Creator Name" class="has-text-right-mobile"><%= o.creator_name %></td>
                         <td data-title="Order Details" class="has-text-right-mobile">
-                            <%= link_to 'View Details', order_detail_path(o) %>
+                            <%= link_to 'View Details', order_detail_path(o), data: { turbolinks: true}  %>
                         </td>
                         <td data-title="Due Date" class="has-text-right-mobile"><%= o.due_date.strftime('%d %b %Y') %></td>
                         <td data-title="Amount" class="has-text-right-mobile"><%= number_to_currency(o.amount) %></td>

@@ -1,3 +1,17 @@
+<style>
+.steps{
+  font-family: "Nexa Bold", sans-serif;
+}
+.step-title{
+  font-family: "Nexa Bold", sans-serif;
+}
+.button{
+  font-family: "Nexa Bold", sans-serif;
+}
+.label{
+  font-family: "Nexa Bold", sans-serif;
+}
+</style>
 <% content_for(:html_title) { 'Create new content - Ceefuu' } %>
 <section class="section">
   <div class="container">
@@ -38,12 +52,12 @@
       <!-- FORM TO CREATE A NEW CONTENT HERE-->
       <%= form_for @content, html: {class: "steps-content m-l-0 m-r-0"} do |f| %>
         <div class="field">
-            <label class="label">Service Title</label>
-            <%= f.text_area :title, autocomplete: "title", class: "input" %>
+            <label class="label">Category</label>
+            <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] })) %>
         </div>
         <div class="field">
-            <label class="label">Category</label>
-            <%= f.select(:category_id,  options_for_select(@categories.map{ |c| [c.name, c.id] })) %>
+            <label class="label">Service Title</label>
+            <%= f.text_area :title, autocomplete: "title", class: "input" %>
         </div>
         <div class="field is-grouped is-grouped-centered m-t-25">
             <a href="" data-nav="previous" class="button is-light">Cancel</a>&nbsp;&nbsp;
@@ -54,3 +68,4 @@
     </div>
   </div>
 </section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">

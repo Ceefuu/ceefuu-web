@@ -1,15 +1,29 @@
-<div class="step-content <%= 'is-active' if @step == 1 %>">
+<style>
+.step-content{
+  font-family: "Nexa Bold", sans-serif;
+}
+.button{
+  font-family: "Nexa Bold", sans-serif;
+}
+.label{
+  font-family: "Nexa Bold", sans-serif;
+}
+</style>
+<div class="step-content <%= 'is-active' if @step == 1 %>"><br>
+    <div class="field">
+        <label class="label">Category</label>
+        <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }, selected: @content.category_id))%>
+    </div>
+
     <div class="field">
         <label class="label">Service Title</label>
         <%= f.text_area :title, autocomplete: "title", class: "input" %>
     </div>
-    <div class="field">
-        <label class="label">Category</label>
-        <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }, selected: @content.category_id)) %>
-    </div>
+
     <div class="field">
         <label class="checkbox">
-            <%= f.check_box :has_single_price, class: "checkbox", onchange: "this.form.submit();" %> Has Single Price
+            <%= f.check_box :has_single_price, class: "checkbox", onchange: "this.form.submit();" %> Has single price (Mentor only via text message)
         </label>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">

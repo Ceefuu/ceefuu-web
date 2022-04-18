@@ -13,7 +13,7 @@
     </script>
 
     <title>
-      <%= content_for?(:html_title) ? yield(:html_title) : "Ceefuu - Build & Scale a Virtual Consulting Business" %>
+      <%= content_for?(:html_title) ? yield(:html_title) : "Ceefuu - Become a mentor and start earning" %>
     </title>
 
     <meta name="viewport" id="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
@@ -34,7 +34,7 @@
 
   </head>
 
-  <body>
+ <body>
     <% unless controller_name == "registrations" or controller_name == "sessions" or controller_name == "passwords" or controller_name == "confirmations" or controller_name == "unlocks" %>
     <%= render  "shared/navbar" %>
      <% end %>

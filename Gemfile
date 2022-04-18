@@ -27,7 +27,6 @@ gem 'trestle-auth', '=0.4.3'
 gem 'trestle-search', '=0.4.3'
 gem 'trestle-tinymce', '=0.3.1'
 
-gem 'activemerchant', '=1.124.0'
 gem 'friendly_id', '~> 5.4.0'
 
 gem "sentry-ruby"

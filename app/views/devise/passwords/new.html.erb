@@ -1,103 +1,84 @@
 <style>
-:root {
-	--brandColor: hsl(166, 67%, 51%);
-	--background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-	--textDark: hsla(0, 0%, 0%, 0.66);
-	--textLight: hsla(0, 0%, 0%, 0.33);
+.has-text-centered{
+  font-family: "Nexa Regular", sans-serif;
 }
-
-body {
-	background: var(--background);
-	height: 105vh;
-	color: var(--textDark);
-}
-
-.field:not(:last-child) {
-	margin-bottom: 1rem;
-}
-
-.register {
-	margin-top: 8rem;
-	background: white;
-	border-radius: 10px;
-}
-
-.left,
-.right {
-	padding: 4.5rem;
-}
-
-.left {
-	border-right: 5px solid var(--background);
-}
-
-.left .title {
-	font-weight: 800;
-	letter-spacing: -2px;
-}
-
-.left .colored {
-	color: var(--brandColor);
-	font-weight: 500;
-	margin-top: 1rem !important;
-	letter-spacing: -1px;
-}
-
-.left p {
-	color: var(--textLight);
-	font-size: 1.15rem;
-}
-
-.right .title {
-	font-weight: 800;
-	letter-spacing: -1px;
-}
-
-.right .description {
-	margin-top: 1rem;
-	margin-bottom: 1rem !important;
-	color: var(--textLight);
-	font-size: 1.15rem;
-}
-
-.right small {
-	color: var(--textLight);
-}
-
-input {
-	font-size: 1rem;
-}
-
-.fab,
-.fas {
-	color: var(--textLight);
-	margin-right: 1rem;
+.has-text-left{
+  font-family: "Nexa Regular", sans-serif;
 }
 </style>
 <% content_for(:html_title) { 'Reset your password - Ceefuu' } %>
-	<section class="container">
-		<div class="columns is-multiline">
-			<div class="column is-4 is-offset-4 register">
-				<div class="columns">
-					<div class="column right">
-						<h1 class="title is-4">Reset your password</h1>
-						<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-							<%= render "devise/shared/error_messages", resource: resource %>
-								<div class="field">
-									<div class="control">
-										<%= f.label :email, class: "label" %>
-											<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
-									</div>
-								</div>
-								<div class="field">
-									<div class="control">
-										<%= f.submit "Send password reset instructions", class: "button is-block is-black is-fullwidth" %>
-									</div>
-								</div>
-								<% end %>
-									<br> <small class="has-text-black">Already have an account? <%= link_to  "Login", new_user_session_path%></small>
-									<br> </div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- Wrapper -->
+    <div class="login-wrapper columns is-gapless">
+        <!-- Form section -->
+        <div class="column is-7">
+            <div class="hero is-fullheight">
+                <div class="hero-heading">
+                    <div class="auth-logo">
+                       
+                    </div>
+                </div>
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column"></div>
+                            <div class="column is-5">
+                                <div class="auth-content">
+                                    <h2>Reset password!</h2>
+                                    <p class="has-text-left">Secure your new password</p>
+                                    <p class="has-text-left">
+                                    <%= link_to  "Log in to continue", new_user_session_path, data: { turbolinks: false } %>
+                                    </p>
+                                </div>
+
+                                <!-- Login Form -->
+                                
+                                    <div id="signin-form" class="login-form animated preFadeInLeft fadeInLeft">
+                                        <!-- Input -->
+                                        <div class="field pb-10">
+                                            <div class="control has-icons-right">
+                                            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                            				<%= render "devise/shared/error_messages", resource: resource %>
+												<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input is-medium has-shadow",  placeholder: "Email"%>
+                                                <span class="icon is-medium is-right">
+                                                    <i class="fas fa-envelope"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- Submit -->
+                                        <p class="control login">
+                                        <%= f.submit "Reset password", class: "
+                                button button-cta
+                                primary-btn
+                                btn-align-lg
+                                is-bold is-fullwidth
+                                rounded
+                                raised
+                                no-lh
+                              " %><% end %>
+                                  
+                                        </p>
+                                    </div>
+                                
+
+                                <!-- Toggles -->
+                        
+                            </div>
+                            <div class="column"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image section (hidden on mobile) -->
+        <div class="column login-column is-5 is-hidden-mobile hero-banner">
+            <div class="hero is-fullheight is-theme-primary is-relative">
+                <div class="columns has-text-centered">
+                    <div class="column">
+                       
+                    </div>
+                </div>
+                 <%= image_tag "home/login.jpg", class: "login-city" %>
+            </div>
+        </div>
+    </div>

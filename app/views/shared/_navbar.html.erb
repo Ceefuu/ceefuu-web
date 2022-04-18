@@ -18,16 +18,24 @@ div.scrollmenu a:hover {
   background-color: #ffffff;
 }
 
+.navbar-end{
+    font-family: "Nexa Bold", sans-serif;
+}
+
+.scrollmenu{
+    font-family: "Nexa Bold", sans-serif;
+}
+
 .input{
 
     width: 500px
 }
 </style>
 
-<nav class="navbar is-white has-shadow" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item has-text-weight-bold" href="/">
-            Ceefuu
+            <%= image_tag "home/logo.png", width: "70%", height: "70%" %>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="true" data-target="navbarBasicExample">
@@ -41,51 +49,26 @@ div.scrollmenu a:hover {
 
 
     <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item">
+        <div class="navbar-end">
+         <div class="navbar-item">
             <%= link_to 'Discover', search_path, class: "navbar-item" %>
             <a href = "mailto: support@ceefuu.com" target="_newtab" class="navbar-item" >Help</a>
         </div>
-    </div>
-    
-        <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item">
-                 <%= form_tag search_path, method: :get do %>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <%= text_field_tag 'q', '', class: "input", placeholder: "Try mentorship or coaching" %>
-                        </div>
-                    </div>
-                <% end %>
-            </div>
-        </div>
-    
-        
-
-        <div class="navbar-end">
-        
 
             <% if (!user_signed_in?) %>
                 <div class="navbar-item">
                     <div class="buttons">
-                        <%= link_to  "Log in", new_user_session_path, class: "button is-light", data: { turbolinks: false } %>
+                        <%= link_to  "Sign in", new_user_session_path, class: "button is-light", data: { turbolinks: false } %>
                         <%= link_to  "Sign up", new_user_registration_path, class: "button is-black" %>
                     </div>
                 </div>
             <% else %>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        <figure class="image is-24x24 m-r-5 avatar is-hidden-mobile <%= current_user.status ? "online" : "offline" %>">
-                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
-                        </figure>
+                    <a class="navbar-link"> 
                         <%= current_user.full_name %>
                     </a>
 
-                    <div class="navbar-dropdown">
+                    <div class="navbar-dropdown is-hidden-mobile is-boxed">
                         <%= link_to "Profile", current_user, class: "navbar-item" %>
                         <%= link_to "Settings", edit_user_registration_path, class: "navbar-item" %>
                         <%= link_to 'Dashboard', dashboard_path, class: "navbar-item" %>
@@ -103,8 +86,8 @@ div.scrollmenu a:hover {
         <div class="container">
             <div class="scrollmenu">
                 <%= link_to 'Home', dashboard_path, class: "navbar-item" %>
-                <%= link_to 'Create New Service', new_content_path, class: "navbar-item" %>
-                <%= link_to 'Selling History', selling_orders_path, class: "navbar-item" %>
+                <%= link_to 'Add New Service', new_content_path, class: "navbar-item" %>
+                <%= link_to 'Sales History', selling_orders_path, class: "navbar-item" %>
                 <%= link_to 'Purchase History', buying_orders_path, class: "navbar-item" %>
                 <%= link_to 'Earnings', earnings_path, class: "navbar-item" %>
                 <%= link_to 'Payment Method', settings_payment_path, class: "navbar-item" %>
@@ -114,17 +97,38 @@ div.scrollmenu a:hover {
     </nav>
 <% end %>
 
+
 <script>
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-  // Check for click events on the navbar burger icon
-  $(".navbar-burger").click(function() {
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
 
-  });
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+
+document.querySelectorAll('.navbar-link').forEach(function(navbarLink){
+  navbarLink.addEventListener('click', function(){
+    navbarLink.nextElementSibling.classList.toggle('is-hidden-mobile');
+  })
 });
 </script>
 

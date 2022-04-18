@@ -69,12 +69,25 @@
   width: 100%;
   height: 100%;
 }
-
+.title {
+    font-family: "Nexa Bold", sans-serif;
+}
+.media-content{
+    font-family: "Nexa Bold", sans-serif;
+}
+.media-right{
+    font-family: "Nexa Regular", sans-serif;
+}
+.has-text-left{
+    font-family: "Nexa Regular", sans-serif;
+}
+.column{
+    font-family: "Nexa Bold", sans-serif;
+}
 </style>
-<% content_for(:html_title)  {@user.full_name}  %>
+<% content_for(:html_title)  {@user.full_name} %><% content_for(:html_title) { ' on Ceefuu' } %>
 
 <% content_for :head do %>
-  <meta name="turbolinks-cache-control" content="no-cache">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ceefuu.com/">
@@ -109,40 +122,6 @@
                             </div>
                             
                             <div class="card-content">
-
-                                <!-- Upload Button -->
-                                <div class="content has-text-centered">
-                                    <p class="title is-5"><%= @user.full_name %></p>
-                                    <div id="follow_form">
-                                      <% if current_user.id != @user.id %>
-                                        <% if current_user.following.include?(@user) %>
-                                          <%= render partial: 'users/unfollow', locals: { user: @user} %>
-                                        <% else %>
-                                          <%= render partial: 'users/follow', locals: { user: @user} %>
-                                        <% end %>
-                                      <% end %>
-                                    </div>
-                                </div>
-                                <hr class="h-10">
-
-                                <!-- Followers -->
-                                <article class="media">
-                                    <div class="media-content">Followers</div>
-                                    <div class="media-right">
-                                        <strong><%= @user.followers.count %></strong>
-                                    </div>
-                                </article>
-                                <hr class="h-10">
-
-                                <!-- Following -->
-                                <article class="media">
-                                    <div class="media-content">Following</div>
-                                    <div class="media-right">
-                                        <strong><%= @user.following.count %></strong>
-                                    </div>
-                                </article>
-                                <hr class="h-10">
-                                
                                 <!-- From -->
                                 <article class="media">
                                     <div class="media-content">Location</div>
@@ -163,7 +142,7 @@
                                 <!-- About -->
                                 <article class="media">
                                     <div class="media-content">
-                                        <p>
+                                        <p class="has-text-left">
                                             <strong>Bio</strong>
                                             <br>
                                             <%= @user.about %>
@@ -175,7 +154,7 @@
                                 <!-- Language -->
                                 <article class="media">
                                     <div class="media-content">
-                                        <p>
+                                        <p class="has-text-left">
                                             <strong>Language</strong>
                                             <br>
                                             <%= @user.language %>
@@ -204,14 +183,12 @@
                                 <!-- <figure class="image is-4by4">
                                     <%= image_tag content_cover(content) %>
                                 </figure> -->
-                                <div class="column is-full">   
-                                    <div class="card">
-                                        <% if content.pitch.present? %>
-                                            <div class="flexible-container">
-                                                <iframe src="https://www.youtube.com/embed/<%= content.pitch %>" allowfullscreen></iframe>
-                                            </div>
-                                            <% end %>
-                                    </div>
+                               <div class="card-image">
+                                    <%= link_to content_path(content) do %>
+                                        <figure class="image is-5by3">
+                                            <%= image_tag content_cover(content) %>
+                                        </figure>
+                                    <% end %>
                                 </div>
                         </div>
             
@@ -234,10 +211,10 @@
                                 </span>
 
                             <a class="has-text-black is-block card-footer-item has-text-centered">
-                                <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %> 
-                                <% if !basic_price.nil? %>
+                                <% message_price = content.pricings.find{ |p| p.pricing_type == 'message' } %> 
+                                <% if !message_price.nil? %>
                                             <span class="small-title">STARTING AT</span> 
-                                            <strong><%= number_to_currency(basic_price.price) %></strong>                                            
+                                            <strong><%= number_to_currency(message_price.price) %></strong>                                            
                                         <% else %>
                                             <strong>
                                                 <span class="small-title has-text-dark">NO PRICING YET</span>
@@ -270,7 +247,7 @@
 
                                 <div class="media-content">
                                     <div class="content">
-                                        <p>
+                                        <p class="has-text-left">
                                             <strong><%= r.buyer.full_name %></strong><br>
                                             <%= r.review %>
                                         </p>
@@ -291,5 +268,3 @@
         </div>
     </div>
 </section>
-<%= render  "shared/footer" %>
-

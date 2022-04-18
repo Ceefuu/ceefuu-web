@@ -1,6 +1,10 @@
-<div class="step-content <%= 'is-active' if @step == 4 %>">
+<div class="step-content <%= 'is-active' if @step == 4 %>"><br>
 
     <div class="field">
+    <div class="field">
+        <label for="" class="label">Pitch Video (Upload to YouTube and provide the unique 11 characters after "v=" from the url.)</label>
+        <%= f.text_field :pitch, autocomplete: "video url", class: "input" %>
+    </div>
         <label for="" class="label">Photo Gallery</label>
         <div class="control">
             <div class="m-b-20">
@@ -43,3 +47,4 @@
         }
     }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">

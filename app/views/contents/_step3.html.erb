@@ -1,20 +1,7 @@
-<div class="step-content <%= 'is-active' if @step == 3 %>">
-<div class="field">
-        <div class="content">
-        <ul>
-            <li>Come up with an effective pitch to hook the attention of your audience.</li>
-            <li>Provide a clear value proposition of what people can achieve from your skills and experience.</li>
-            <li>Position the camera in landscape mode while recording.</li>
-            <li>Avoid any background noise while pitching.</li>
-            <li>Upload to YouTube and provide the unique 11 characters after "v=" from the url.</li>
-        </ul>
-        </div>
-
-        <label for="" class="label">Pitch Video</label>
-        <%= f.text_field :pitch, autocomplete: "video url", class: "input" %>
-    </div>
+<div class="step-content <%= 'is-active' if @step == 3 %>"><br>
     <div class="field">
         <label for="" class="label">Description</label>
         <%= f.rich_text_area :description, rows: 50, cols: 50 %>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">

@@ -1,9 +1,23 @@
+<style>
+.title {
+  font-family: "Nexa Bold", sans-serif;
+}
+.button{
+  font-family: "Nexa Bold", sans-serif;
+}
+.is-size-7{
+    font-family: "Nexa Regular", sans-serif;
+}
+</style>
 <% content_for(:html_title) { 'Add Payout Method - Ceefuu' } %>
 <section class="section">
     <div class="container">
         <div class="columns is-centered">
             <div class="column is-8-tablet is-6-desktop is-6-widescreen">
-                <p class="title has-text-centered">Recieve your earnings</p>
+                <p class="title has-text-centered">Receive your earnings</p>
+                
+                <p class="is-size-7 has-text-centered">(***Before listing your service, kindly connect your bank account via Stripe to recieve payouts***)<p>
+               
                 <br>
             <div class="field is-grouped is-grouped-centered">
                 <% if current_user.merchant_id.blank? %>

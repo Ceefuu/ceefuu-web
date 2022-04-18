@@ -33,6 +33,21 @@
   object-fit: cover;
   object-position: center;
 }
+.button{
+    font-family: "Nexa Bold", sans-serif;
+}
+.title{
+    font-family: "Nexa Bold", sans-serif;
+}
+.media{
+    font-family: "Nexa Bold", sans-serif;
+}
+.column{
+    font-family: "Nexa Regular", sans-serif;
+}
+.has-text-left{
+    font-family: "Nexa Regular", sans-serif;
+}
 </style>
 <% content_for(:html_title) { 'Dashboard - Ceefuu' } %>
 <section class="section">
@@ -123,7 +138,7 @@
                                 <article>
                                     <div class="media">
                                         <div class="media-content">
-                                            <p>
+                                            <p class="has-text-left">
                                                 <strong>Bio</strong>
                                                 <br>
                                                 <%= current_user.about %>
@@ -150,7 +165,7 @@
                                 <article>
                                     <div class="media">
                                         <div class="media-content">
-                                            <p>
+                                            <p class="has-text-left">
                                                 <strong>Language</strong>
                                                 <br>
                                                 <%= current_user.language %>
@@ -195,7 +210,7 @@
                                 </div>
 
                                 <div class="card-content">
-                                    <strong>Create new</strong>
+                                    <strong>Add New Service</strong>
                                 </div>    
 
                             </div>
@@ -217,12 +232,8 @@
                                     <% end %>
                                 </div>
 
-                                <div class="card-content p-t-5 p-b-5">
-                                    <p class="subtitle is-6 m-b-5 ellipsis is-ellipsis-2"><%= link_to content.title, content_path(content), class: "has-text-black" %></p>
-                                    <span class="star-review"><i class="fa fa-star"></i>
-                                        <%= content.average_rating %>
-                                        <span class="has-text-dark">(<%= content.reviews.count %>)</span>
-                                    </span>                                        
+                                <div class="card-content p-t-3 p-b-3">
+                                    <p class="subtitle is-6 m-b-5 ellipsis is-ellipsis-2"><%= link_to content.title, content_path(content), class: "has-text-black" %></p>                                       
                                 </div>
 
                         <footer class="card-footer">
@@ -240,18 +251,6 @@
                                         </small>
                                     <% end %>
                                 </span>
-
-                            <a class="has-text-black is-block card-footer-item has-text-centered">
-                                <% basic_price = content.pricings.find{ |p| p.pricing_type == 'basic' } %> 
-                                <% if !basic_price.nil? %>
-                                            <span class="small-title">STARTING AT</span> 
-                                            <strong><%= number_to_currency(basic_price.price) %></strong>                                            
-                                        <% else %>
-                                            <strong>
-                                                <span class="small-title has-text-dark">NO PRICING YET</span>
-                                            </strong>
-                                        <% end %>
-                            </a>
                         </footer>  
                                 
                             </div>
@@ -266,3 +265,12 @@
     </div>
 </section>
 <%= render "shared/footer" %>
+<script>
+$(document).ready(function(){
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
+</script>

@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
   def create
 
     if !current_user.is_active_creator
-      return redirect_to settings_payout_path, alert: "Please Connect to Stripe Express first."
+      return redirect_to settings_payout_path, alert: "Please add your bank details for payouts."
     end
 
     @content = current_user.contents.build(content_params)
@@ -49,17 +49,13 @@ class ContentsController < ApplicationController
       return redirect_to request.referrer, flash: {error: "Description cannot be blank"}
     end
 
-    if @step == 3 && content_params[:pitch].blank?
-      return redirect_to request.referrer, flash: {error: "Pitch Video cannot be blank"}
-    end
-
     if @step == 4 && @content.photos.blank?
       return redirect_to request.referrer, flash: {error: "You don't have any photos"}
     end
 
     if @step == 5
       @content.pricings.each do |pricing|
-        if @content.has_single_price && !pricing.basic?
+        if @content.has_single_price && !pricing.message?
           next;
         else
           if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
@@ -153,7 +149,7 @@ class ContentsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:title, :pitch, :description, :active, :category_id, :has_single_price, 
+    params.require(:content).permit(:title, :description, :active, :category_id, :has_single_price, 
                                 pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])
   end
 

@@ -14,6 +14,20 @@
   object-fit: cover;
   object-position: center;
 }
+.menu-label {
+  font-family: "Nexa Bold", sans-serif;
+}
+.file-label{
+    font-family: "Nexa Bold", sans-serif;
+}
+.button{
+    font-family: "Nexa Bold", sans-serif;
+}
+.card-content{
+    font-family: "Nexa Bold", sans-serif;
+
+}
+}
 </style>
 <% content_for(:html_title) { 'Orders - Ceefuu' } %>
 <section class="section" data-channel-subscribe="order" data-order-id="<%= @order.id %>">
@@ -28,17 +42,12 @@
                 <hr>
                 <div id="comment-list">
                    <% @comments.each do |c| %>
-                    <%= render 'orders/comment', comment: c %>
+                    <%= render 'orders/comment', comment: c %><br>
                    <% end %>
                 </div>
                 <hr>
 
                 <article class="media">
-                    <figure class="media-left">
-                        <div class="rounded-img-container">                           
-                            <%= image_tag avatar_url(current_user), class: "rounded-img" %>
-                        </div>
-                    </figure>
                     <div class="media-content">
                         <%= form_with model: Comment.new, id: "new-comment" do |f| %>
                             <%= f.hidden_field :order_id, value: @order.id %>
@@ -59,7 +68,7 @@
                             </div>
 
                             <div class="field is-pulled-right">
-                                <%= f.submit "Send", class: "button is-primary", data: { disable_with: false } %>                          
+                                <%= f.submit "Send", class: "button is-black", data: { disable_with: false } %>                          
                             </div>
                         <% end %>
                     </div>
